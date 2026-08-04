@@ -1,8 +1,10 @@
 
+import useResponsive from '@/hooks/useResponsive';
 import { SymbolView } from 'expo-symbols';
 import { Platform, Pressable, ScrollView, StyleSheet, View, Text, Image } from 'react-native';
 
 export default function SupportUs() {
+  const {isMobile} = useResponsive();
   function DesktopSupport() {
     const styles = StyleSheet.create({
       container: {
@@ -123,7 +125,7 @@ export default function SupportUs() {
     );
   }
 
-  return <MobileSupport/>
+  return isMobile ? <MobileSupport/> : <DesktopSupport/>
 }
 
 
