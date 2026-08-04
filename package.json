@@ -2,6 +2,7 @@
   "name": "website_130",
   "main": "expo-router/entry",
   "version": "1.0.0",
+  "homepage": "https://big-Nates.github.io/Blazing-Spirits-Website/",
   "dependencies": {
     "@expo-google-fonts/inter": "^0.4.2",
     "@expo-google-fonts/lato": "^0.4.1",
