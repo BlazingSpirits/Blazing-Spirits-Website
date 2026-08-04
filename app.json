@@ -34,7 +34,16 @@
             "imageWidth": 76
           }
         }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "node_modules/@expo-google-fonts/lato/700Bold/lato_700Bold.ttf"
+          ]
+        }
       ]
+      
     ],
     "experiments": {
       "typedRoutes": true,
