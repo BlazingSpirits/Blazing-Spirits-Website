@@ -1,5 +1,5 @@
 import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, Pressable, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { View, Text, Image, FlatList, ImageBackground, ScrollView, Animated, Easing } from "react-native";
 import { useWindowDimensions } from "react-native";
@@ -10,6 +10,7 @@ import { Link } from 'expo-router';
 import { EVENT_DATES, IMAGE_LIST } from '../../config';
 import useResponsive from '@/hooks/useResponsive';
 
+import { router } from 'expo-router';
 
 
 export default function HomeScreen() {
@@ -256,7 +257,7 @@ export default function HomeScreen() {
         </Text>
         <View style={styles.teamSponsorView}>
           <Text style={styles.sponsorHeaderText}>
-            Sponsored By
+            Sponsored Byes 
           </Text>
           <Image source={{uri: slides[1].image}} style={styles.sponsorImage}/>
         </View>
@@ -265,14 +266,26 @@ export default function HomeScreen() {
       <View style={styles.upcomingEventsView}>
         <Text style={styles.upcomingEventsHeader}> Upcoming Events</Text>
         <View style={styles.eventsHolderView}>
-          <View style={styles.eventView}>
-            <Image style={styles.eventImage} source={{uri: slides[0].image}}/>
-            <View style={styles.eventTextView}>
-              <Text style={styles.eventNameHeader}>{EVENT_DATES[0].eventName}</Text>
-              <Text style={styles.eventDescription}>{EVENT_DATES[0].description}</Text>
+          <Pressable onPress={()=>{router.push({
+              pathname: "/events",
+              params: {
+                event_index: 0
+              }
+            })}}>
+            <View style={styles.eventView}>
+                <Image style={styles.eventImage} source={{ uri: slides[0].image }} />
+                <View style={styles.eventTextView}>
+                  <Text style={styles.eventNameHeader}>{EVENT_DATES[0].eventName}</Text>
+                  <Text style={styles.eventDescription}>{EVENT_DATES[0].description}</Text>
+                </View>
             </View>
-          </View>
-
+          </Pressable>
+          <Pressable onPress={()=>{router.push({
+              pathname: "/events",
+              params: {
+                event_index: 1
+              }
+            })}}>
           <View style={styles.eventView}>
             <Image style={styles.eventImage} source={{uri: slides[0].image}}/>
             <View style={styles.eventTextView}>
@@ -280,6 +293,7 @@ export default function HomeScreen() {
               <Text style={styles.eventDescription}>{EVENT_DATES[1].description}</Text>
             </View>
           </View>
+          </Pressable>
         </View>
       </View>
 
@@ -540,21 +554,34 @@ export default function HomeScreen() {
         <View style={styles.upcomingEventsView}>
           <Text style={styles.upcomingEventsHeader}> Upcoming Events</Text>
           <View style={styles.eventsHolderView}>
-            <View style={styles.eventView}>
-              <Image style={styles.eventImage} source={{ uri: slides[0].image }} />
-              <View style={styles.eventTextView}>
-                <Text style={styles.eventNameHeader}>{EVENT_DATES[0].eventName}</Text>
-                <Text style={styles.eventDescription}>{EVENT_DATES[0].description}</Text>
+            <Pressable onPress={()=>{router.push({
+              pathname: "/events",
+              params: {
+                event_index: 0
+              }
+            })}}>
+              <View style={styles.eventView}>
+                <Image style={styles.eventImage} source={{ uri: slides[0].image }} />
+                <View style={styles.eventTextView}>
+                  <Text style={styles.eventNameHeader}>{EVENT_DATES[0].eventName}</Text>
+                  <Text style={styles.eventDescription}>{EVENT_DATES[0].description}</Text>
+                </View>
               </View>
-            </View>
-            <View style={styles.eventView}>
-              <Image style={styles.eventImage} source={{ uri: slides[0].image }} />
-              <View style={styles.eventTextView}>
-                <Text style={styles.eventNameHeader}>{EVENT_DATES[0].eventName}</Text>
-                <Text style={styles.eventDescription}>{EVENT_DATES[0].description}</Text>
+            </Pressable>
+            <Pressable onPress={()=>{router.push({
+              pathname: "/events",
+              params: {
+                event_index: 1
+              }
+            })}}>
+              <View style={styles.eventView}>
+                <Image style={styles.eventImage} source={{ uri: slides[0].image }} />
+                <View style={styles.eventTextView}>
+                  <Text style={styles.eventNameHeader}>{EVENT_DATES[1].eventName}</Text>
+                  <Text style={styles.eventDescription}>{EVENT_DATES[1].description}</Text>
+                </View>
               </View>
-            </View>
-            
+            </Pressable>
           </View>
         </View>
 

@@ -25,7 +25,7 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
             },
             {
                 id: 3,
-                name: "Zain",
+                name: "Marc",
                 isMentor: false,
                 duration: 3,
                 role: "CAD Lead",
@@ -36,7 +36,7 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
         [
             {
                 id: 0,
-                name: "Jimmy",
+                name: "Zain",
                 isMentor: false,
                 duration: 5,
                 role: "Captain/Lead Programmer",
@@ -45,7 +45,7 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
             },
             {
                 id: 1,
-                name: "John",
+                name: "Bethany",
                 isMentor: false,
                 duration: 6,
                 role: "Captain/Lead Builder",
@@ -54,7 +54,7 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
             },
             {
                 id: 3,
-                name: "Bob",
+                name: "Josiah",
                 isMentor: false,
                 duration: 3,
                 role: "CAD Lead",
@@ -67,7 +67,7 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
         [
             {
                 id: 0,
-                name: "Nathan",
+                name: "Elyse",
                 isMentor: true,
                 duration: 5,
                 role: "Captain/Lead Programmer",
@@ -76,7 +76,7 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
             },
             {
                 id: 1,
-                name: "Audrey",
+                name: "Mark",
                 isMentor: true,
                 duration: 6,
                 role: "Captain/Lead Builder",
@@ -85,7 +85,7 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
             },
             {
                 id: 3,
-                name: "Zain",
+                name: "Brittney",
                 isMentor: true,
                 duration: 3,
                 role: "CAD Lead",
@@ -114,7 +114,7 @@ export const EVENT_DATES = [
         dateString: "2026-08-14",
         eventName: "CAD BLITZ",
         image: "",
-        dateDisplay: "8/9/26",
+        dateDisplay: "8/14/26",
         time: "6PM - 7:30PM",
         description: "Quick weekday events meant to give kids easy access to CAD software (Onshape) through interactive activities. Students will leave with a better understanding of CAD design, having created a 3D printed part.",
         signupNeeded: true
@@ -123,7 +123,7 @@ export const EVENT_DATES = [
         dateString: "2026-08-21",
         eventName: "Programming BLITZ",
         image: "",
-        dateDisplay: "8/9/26",
+        dateDisplay: "8/21/26",
         time: "6PM - 7:30PM",
         description: "Quick weekday event meant to give students intuitive experience with programming through more competitive activities involving Scratch, LEGO SPIKE kits, and other materials.",
         signupNeeded: true
@@ -132,7 +132,7 @@ export const EVENT_DATES = [
         dateString: "2026-08-28",
         eventName: "CAD BLITZ",
         image: "",
-        dateDisplay: "8/9/26",
+        dateDisplay: "8/28/26",
         time: "6PM - 7:30PM",
         description: "Quick weekday events meant to give kids easy access to CAD software (Onshape) through interactive activities. Students will leave with a better understanding of CAD design, having created a 3D printed part.",
         signupNeeded: true
@@ -141,7 +141,7 @@ export const EVENT_DATES = [
         dateString: "2026-09-12",
         eventName: "Bottle & Can Drive + FTC Kickoff",
         image: "",
-        dateDisplay: "8/9/26",
+        dateDisplay: "9/12/26",
         time: "9AM - 2PM",
         description: "Bring bottles and cans to the build site to help us fundraise for the FTC Season. This date also marks the first day of the FTC season!",
         signupNeeded: false

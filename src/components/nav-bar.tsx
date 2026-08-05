@@ -8,6 +8,7 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import useResponsive from '@/hooks/useResponsive';
 
 
+
 export default function NavBar() {
   const { width, height } = useWindowDimensions();
   const { isMobile } = useResponsive();

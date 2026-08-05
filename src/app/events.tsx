@@ -7,14 +7,23 @@ import { useState } from 'react';
 import { JumpingTransition } from 'react-native-reanimated';
 import { WebView } from 'react-native-webview';
 import useResponsive from '@/hooks/useResponsive';
+import { useLocalSearchParams } from 'expo-router';
+import { router } from 'expo-router';
 
 export default function Events() {
+  
   const {isMobile} = useResponsive();
 
   function DesktopEvents(){
     const isoDateString = new Date().toISOString().split('T')[0];
-    const [eventDatesIndex, setEventDateIndex] = useState<number | null>(null);
     const [eventDetailsHeight, setEventDetailsHeight] = useState(375);
+
+    const { event_index } = useLocalSearchParams();
+    const urlEventIndex = Array.isArray(event_index)
+      ? Number(event_index[0])
+      : event_index
+        ? Number(event_index)
+        : null;
 
     const checkDates = (day: string) => {
       const index = EVENT_DATES.findIndex(
@@ -22,14 +31,21 @@ export default function Events() {
       );
 
       if (index !== -1) {
-        setEventDateIndex(index);
+        router.push({
+          pathname: "/events",
+          params: {
+            event_index: index
+          }
+        });
         if (EVENT_DATES[index].signupNeeded) {
           setEventDetailsHeight(450);
         } else {
           setEventDetailsHeight(375)
         }
       } else {
-        setEventDateIndex(null);
+        router.push({
+          pathname: "/events"
+        });
       }
     };
 
@@ -65,14 +81,14 @@ export default function Events() {
               // Mark specific dates as marked
               markedDates={MARKED_DATES}
             />
-            {eventDatesIndex !== null ? (
+            {urlEventIndex !== null && urlEventIndex !== undefined ? (
               <View style={{ flexDirection: "column", width: 425, height: eventDetailsHeight, justifyContent: "center" }}>
                 <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "space-between", height: 350 }}>
-                  <Text style={styles.eventNameHeader}>{EVENT_DATES[eventDatesIndex].eventName}</Text>
+                  <Text style={styles.eventNameHeader}>{EVENT_DATES[urlEventIndex].eventName}</Text>
                   <Image style={{ backgroundColor: "grey", width: 425, height: 225 }} />
-                  <Text>{EVENT_DATES[eventDatesIndex].description} ({EVENT_DATES[eventDatesIndex].time})</Text>
+                  <Text>{EVENT_DATES[urlEventIndex].description} ({EVENT_DATES[urlEventIndex].dateDisplay} • {EVENT_DATES[urlEventIndex].time})</Text>
                 </View>
-                {EVENT_DATES[eventDatesIndex].signupNeeded ? (
+                {EVENT_DATES[urlEventIndex].signupNeeded ? (
                   <View /* Button*/
                     style={{
                       flexDirection: "row",
@@ -109,6 +125,7 @@ export default function Events() {
                 </Text>
               </View>
             )}
+            
           </View>
 
         </ScrollView>
@@ -120,8 +137,14 @@ export default function Events() {
 
   function MobileEvents(){
     const isoDateString = new Date().toISOString().split('T')[0];
-    const [eventDatesIndex, setEventDateIndex] = useState<number | null>(null);
     const [eventDetailsHeight, setEventDetailsHeight] = useState(375);
+
+    const { event_index } = useLocalSearchParams();
+    const urlEventIndex = Array.isArray(event_index)
+      ? Number(event_index[0])
+      : event_index
+        ? Number(event_index)
+        : null;
 
     const checkDates = (day: string) => {
       const index = EVENT_DATES.findIndex(
@@ -129,14 +152,21 @@ export default function Events() {
       );
 
       if (index !== -1) {
-        setEventDateIndex(index);
+        router.push({
+          pathname: "/events",
+          params: {
+            event_index: index
+          }
+        });
         if (EVENT_DATES[index].signupNeeded) {
           setEventDetailsHeight(375);
         } else {
           setEventDetailsHeight(375)
         }
       } else {
-        setEventDateIndex(null);
+        router.push({
+          pathname: "/events",
+        });
       }
     };
 
@@ -168,14 +198,14 @@ export default function Events() {
               // Mark specific dates as marked
               markedDates={MARKED_DATES}
             />
-            {eventDatesIndex !== null ? (
+            {urlEventIndex !== null ? (
               <View style={{ flexDirection: "column", width: 350, height: eventDetailsHeight, justifyContent: "center" }}>
                 <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "space-between", height: 300 }}>
-                  <Text style={styles.eventNameHeader}>{EVENT_DATES[eventDatesIndex].eventName}</Text>
+                  <Text style={styles.eventNameHeader}>{EVENT_DATES[urlEventIndex].eventName}</Text>
                   <Image style={{ backgroundColor: "grey", width: 250, height: 150 }} />
-                  <Text>{EVENT_DATES[eventDatesIndex].description} ({EVENT_DATES[eventDatesIndex].time})</Text>
+                  <Text>{EVENT_DATES[urlEventIndex].description} ({EVENT_DATES[urlEventIndex].dateDisplay} • {EVENT_DATES[urlEventIndex].time})</Text>
                 </View>
-                {EVENT_DATES[eventDatesIndex].signupNeeded ? (
+                {EVENT_DATES[urlEventIndex].signupNeeded ? (
                   <View /* Button*/
                     style={{
                       flexDirection: "row",
