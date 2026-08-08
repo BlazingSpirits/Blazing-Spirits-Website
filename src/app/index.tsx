@@ -257,7 +257,7 @@ export default function HomeScreen() {
         </Text>
         <View style={styles.teamSponsorView}>
           <Text style={styles.sponsorHeaderText}>
-            Sponsored Byes 
+            Sponsored By 
           </Text>
           <Image source={{uri: slides[1].image}} style={styles.sponsorImage}/>
         </View>
