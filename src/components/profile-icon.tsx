@@ -107,8 +107,8 @@ export const ProfileIcon: React.FC<ProfileIconProps> = ({
                 
             </View>
             <View style={styles.descriptionView}>
-                <Text style={{fontSize: 15}}>{name}</Text>
-                <Text style={{fontSize: 12}}>{role} • {durationPhrase()}</Text>
+                <Text style={{fontSize: 15 , fontFamily: "Lato_400Regular"}}>{name}</Text>
+                <Text style={{fontSize: 12, fontFamily: "Lato_300Light"}}>{role} • {durationPhrase()}</Text>
             </View>
         </View>
     );

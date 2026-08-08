@@ -3,7 +3,7 @@ import { SymbolView } from 'expo-symbols';
 import { Platform, Pressable, ScrollView, StyleSheet, View, Text } from 'react-native';
 import {Calendar, LocaleConfig} from 'react-native-calendars';
 import { EVENT_DATES, MARKED_DATES } from '../../config';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { JumpingTransition } from 'react-native-reanimated';
 import { WebView } from 'react-native-webview';
 import useResponsive from '@/hooks/useResponsive';
@@ -16,36 +16,33 @@ export default function Events() {
 
   function DesktopEvents(){
     const isoDateString = new Date().toISOString().split('T')[0];
+    const [currentMonth, setCurrentMonth] = useState(isoDateString);
     const [eventDetailsHeight, setEventDetailsHeight] = useState(375);
 
     const { event_index } = useLocalSearchParams();
-    const urlEventIndex = Array.isArray(event_index)
+    const [urlEventIndex, setUrlEventIndex] = useState(Array.isArray(event_index)
       ? Number(event_index[0])
       : event_index
         ? Number(event_index)
-        : null;
+        : null);
+    
 
     const checkDates = (day: string) => {
       const index = EVENT_DATES.findIndex(
         event => event.dateString === day
       );
+      
 
       if (index !== -1) {
-        router.push({
-          pathname: "/events",
-          params: {
-            event_index: index
-          }
-        });
+        setUrlEventIndex(index);
+
         if (EVENT_DATES[index].signupNeeded) {
           setEventDetailsHeight(450);
         } else {
           setEventDetailsHeight(375)
         }
       } else {
-        router.push({
-          pathname: "/events"
-        });
+        setUrlEventIndex(null);
       }
     };
 
@@ -71,9 +68,12 @@ export default function Events() {
                 height: 375,
                 width: 700,
               }}
-              // Specify the current date
-              current={isoDateString}
-              // Callback that gets called when the user selects a day
+              current={currentMonth}
+
+              onMonthChange={month => {
+                setCurrentMonth(month.dateString);
+              }}
+
               onDayPress={day => {
                 console.log('selected day', day);
                 checkDates(day.dateString);
@@ -86,7 +86,7 @@ export default function Events() {
                 <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "space-between", height: 350 }}>
                   <Text style={styles.eventNameHeader}>{EVENT_DATES[urlEventIndex].eventName}</Text>
                   <Image style={{ backgroundColor: "grey", width: 425, height: 225 }} />
-                  <Text>{EVENT_DATES[urlEventIndex].description} ({EVENT_DATES[urlEventIndex].dateDisplay} • {EVENT_DATES[urlEventIndex].time})</Text>
+                  <Text style={{fontSize: 15, fontFamily:"Lato_400Regular"}}>{EVENT_DATES[urlEventIndex].description} ({EVENT_DATES[urlEventIndex].dateDisplay} • {EVENT_DATES[urlEventIndex].time})</Text>
                 </View>
                 {EVENT_DATES[urlEventIndex].signupNeeded ? (
                   <View /* Button*/
@@ -120,7 +120,7 @@ export default function Events() {
               </View>
             ) : (
               <View style={{ justifyContent: "center", alignItems: "center", width: 425, height: 350 }}>
-                <Text>
+                <Text style={{fontSize: 20, fontFamily:"Lato_400Regular"}}>
                   Select a date to view an event
                 </Text>
               </View>
@@ -135,121 +135,182 @@ export default function Events() {
 
   }
 
-  function MobileEvents(){
-    const isoDateString = new Date().toISOString().split('T')[0];
-    const [eventDetailsHeight, setEventDetailsHeight] = useState(375);
 
-    const { event_index } = useLocalSearchParams();
-    const urlEventIndex = Array.isArray(event_index)
+function MobileEvents() {
+  const isoDateString = new Date().toISOString().split('T')[0];
+
+  const [currentMonth, setCurrentMonth] = useState(isoDateString);
+  const [eventDetailsHeight, setEventDetailsHeight] = useState(375);
+
+  const { event_index } = useLocalSearchParams();
+
+  const [urlEventIndex, setUrlEventIndex] = useState(
+    Array.isArray(event_index)
       ? Number(event_index[0])
       : event_index
         ? Number(event_index)
-        : null;
+        : null
+  );
 
-    const checkDates = (day: string) => {
-      const index = EVENT_DATES.findIndex(
-        event => event.dateString === day
-      );
-
-      if (index !== -1) {
-        router.push({
-          pathname: "/events",
-          params: {
-            event_index: index
-          }
-        });
-        if (EVENT_DATES[index].signupNeeded) {
-          setEventDetailsHeight(375);
-        } else {
-          setEventDetailsHeight(375)
-        }
-      } else {
-        router.push({
-          pathname: "/events",
-        });
-      }
-    };
-
-    const styles = StyleSheet.create({
-      container: {
-        flex: 1,
-      },
-      eventNameHeader: {
-        fontSize: 25,
-        fontFamily: "Lato_700Bold",
-      },
-    });
-
-    return (
-      <View style={styles.container}>
-        <ScrollView>
-          <View style={{marginTop: 25, justifyContent: "space-between", height: 750, alignItems: "center" }}>
-            <Calendar
-              style={{
-                borderWidth: 1,
-                borderColor: 'gray',
-                height: 375,
-                width: 375,
-              }}
-              current={isoDateString}
-              onDayPress={day => {
-                checkDates(day.dateString);
-              }}
-              // Mark specific dates as marked
-              markedDates={MARKED_DATES}
-            />
-            {urlEventIndex !== null ? (
-              <View style={{ flexDirection: "column", width: 350, height: eventDetailsHeight, justifyContent: "center" }}>
-                <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "space-between", height: 300 }}>
-                  <Text style={styles.eventNameHeader}>{EVENT_DATES[urlEventIndex].eventName}</Text>
-                  <Image style={{ backgroundColor: "grey", width: 250, height: 150 }} />
-                  <Text>{EVENT_DATES[urlEventIndex].description} ({EVENT_DATES[urlEventIndex].dateDisplay} • {EVENT_DATES[urlEventIndex].time})</Text>
-                </View>
-                {EVENT_DATES[urlEventIndex].signupNeeded ? (
-                  <View /* Button*/
-                    style={{
-                      flexDirection: "row",
-                      width: 150,
-                      height: 30,
-                      borderRadius: 5,
-                      marginTop: 10
-                    }}
-                  >
-                    <Pressable onPress={() => { }}>
-                      <View
-                        style={{
-                          width: 150,
-                          height: 30,
-                          backgroundColor: "grey",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          borderRadius: 10,
-                        }}
-                      >
-                        <Text style={{ fontSize: 18 }}>Event Sign Up</Text>
-                      </View>
-                    </Pressable>
-                  </View>
-                ) : (
-                  <View></View>
-                )}
-
-              </View>
-            ) : (
-              <View style={{ justifyContent: "center", alignItems: "center", width: 425, height: 350 }}>
-                <Text>
-                  Select a date to view an event
-                </Text>
-              </View>
-            )}
-          </View>
-
-        </ScrollView>
-
-      </View>
+  const checkDates = (day: string) => {
+    const index = EVENT_DATES.findIndex(
+      event => event.dateString === day
     );
 
-  }
+    if (index !== -1) {
+      setUrlEventIndex(index);
+
+      if (EVENT_DATES[index].signupNeeded) {
+        setEventDetailsHeight(375);
+      } else {
+        setEventDetailsHeight(375);
+      }
+    } else {
+      setUrlEventIndex(null);
+    }
+  };
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    eventNameHeader: {
+      fontSize: 25,
+      fontFamily: "Lato_700Bold",
+    },
+  });
+
+  return (
+    <View style={styles.container}>
+      <ScrollView>
+        <View
+          style={{
+            marginTop: 25,
+            justifyContent: "space-between",
+            height: 750,
+            alignItems: "center",
+          }}
+        >
+          <Calendar
+            style={{
+              borderWidth: 1,
+              borderColor: "gray",
+              height: 375,
+              width: 375,
+            }}
+
+            current={currentMonth}
+
+            onMonthChange={month => {
+              setCurrentMonth(month.dateString);
+            }}
+
+            onDayPress={day => {
+              console.log("selected day", day);
+              checkDates(day.dateString);
+            }}
+
+            markedDates={MARKED_DATES}
+          />
+
+          {urlEventIndex !== null && urlEventIndex !== undefined ? (
+            <View
+              style={{
+                flexDirection: "column",
+                width: 350,
+                height: eventDetailsHeight,
+                justifyContent: "center",
+              }}
+            >
+              <View
+                style={{
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  height: 300,
+                }}
+              >
+                <Text style={styles.eventNameHeader}>
+                  {EVENT_DATES[urlEventIndex].eventName}
+                </Text>
+
+                <Image
+                  style={{
+                    backgroundColor: "grey",
+                    width: 250,
+                    height: 150,
+                  }}
+                />
+
+                <Text
+                  style={{
+                    fontSize: 15,
+                    fontFamily: "Lato_400Regular",
+                  }}
+                >
+                  {EVENT_DATES[urlEventIndex].description} (
+                  {EVENT_DATES[urlEventIndex].dateDisplay} •{" "}
+                  {EVENT_DATES[urlEventIndex].time})
+                </Text>
+              </View>
+
+              {EVENT_DATES[urlEventIndex].signupNeeded ? (
+                <View
+                  style={{
+                    flexDirection: "row",
+                    width: 150,
+                    height: 30,
+                    borderRadius: 5,
+                    marginTop: 10,
+                  }}
+                >
+                  <Pressable onPress={() => {}}>
+                    <View
+                      style={{
+                        width: 150,
+                        height: 30,
+                        backgroundColor: "grey",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        borderRadius: 10,
+                      }}
+                    >
+                      <Text style={{ fontSize: 18 }}>
+                        Event Sign Up
+                      </Text>
+                    </View>
+                  </Pressable>
+                </View>
+              ) : (
+                <View />
+              )}
+            </View>
+          ) : (
+            <View
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+                width: 350,
+                height: 350,
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontFamily: "Lato_400Regular",
+                }}
+              >
+                Select a date to view an event
+              </Text>
+            </View>
+          )}
+        </View>
+      </ScrollView>
+    </View>
+  );
+}
+
+
 
 
 

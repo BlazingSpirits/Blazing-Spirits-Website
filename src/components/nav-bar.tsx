@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useWindowDimensions } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import useResponsive from '@/hooks/useResponsive';
+import * as FileSystem from 'expo-file-system';
 
 
 
@@ -25,16 +26,16 @@ export default function NavBar() {
       alignItems: "center",
     },
     logoView:{
-      width: 200,
+      width: 270,
       height: 70,
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
     },
     logoImage:{
-      width: 50,
-      height: 50,
-      borderRadius: 25,
+      width: 60,
+      height: 60,
+      borderRadius: 0,
     },
     directLinksView:{
       width: 300,
@@ -72,16 +73,20 @@ export default function NavBar() {
 
   });
 
+  
   return (
     <>
       {!modalVisible ? (
         <View style={styles.navBar}>
           <Link href="/">
             <View style={styles.logoView}>
-              <Image style={styles.logoImage} source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWYp2oJD7ooZ3R9cVnuiZLjG1g79_XCr06wvUjCI8d5GN_OigmEafgFx8&s=10" }} />
-              <Text style={styles.logoText}>
-                Blazing Spirits
-              </Text>
+              <Image style={styles.logoImage} resizeMode='contain' source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWYp2oJD7ooZ3R9cVnuiZLjG1g79_XCr06wvUjCI8d5GN_OigmEafgFx8&s=10" }} />
+              {!isMobile ? (
+                <Image style={{width: 250, height: 70}} resizeMode='contain' source={require('website_130/assets/images/blazing-spirits-text-logo.svg')}/>
+              ) : (
+                <Image style={{width: 200, height: 70}} resizeMode='contain' source={require('website_130/assets/images/blazing-spirits-text-logo.svg')}/>
+              )}
+              
             </View>
           </Link>
 
@@ -109,7 +114,7 @@ export default function NavBar() {
               <Pressable onPress={()=>{setModalVisible(true)}}>
                 <MaterialIcons
                   name="menu"
-                  size={25}
+                  size={30}
                   color="black"
                 />
               </Pressable>
@@ -122,7 +127,7 @@ export default function NavBar() {
             <Pressable onPress={()=>{setModalVisible(false)}}>
                 <MaterialIcons
                   name="cancel"
-                  size={25}
+                  size={30}
                   color="black"
                 />
               </Pressable>

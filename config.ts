@@ -11,7 +11,7 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
                 isMentor: false,
                 duration: 5,
                 role: "Captain/Lead Programmer",
-                note: "Creator of this website",
+                note: "Father of this website",
                 source: "",
             },
             {
@@ -20,7 +20,7 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
                 isMentor: false,
                 duration: 6,
                 role: "Captain/Lead Builder",
-                note: "My name is",
+                note: "",
                 source: "",
             },
             {
@@ -29,7 +29,7 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
                 isMentor: false,
                 duration: 3,
                 role: "CAD Lead",
-                note: "Creator of this website",
+                note: "",
                 source: "",
             },
         ],
@@ -39,8 +39,8 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
                 name: "Zain",
                 isMentor: false,
                 duration: 5,
-                role: "Captain/Lead Programmer",
-                note: "Creator of this website",
+                role: "CAD Lead",
+                note: "",
                 source: "",
             },
             {
@@ -48,8 +48,8 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
                 name: "Bethany",
                 isMentor: false,
                 duration: 6,
-                role: "Captain/Lead Builder",
-                note: "My name is",
+                role: "Outreach",
+                note: "",
                 source: "",
             },
             {
@@ -57,8 +57,8 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
                 name: "Josiah",
                 isMentor: false,
                 duration: 3,
-                role: "CAD Lead",
-                note: "Creator of this website",
+                role: "Outreach",
+                note: "",
                 source: "",
             },
         ],
@@ -71,7 +71,7 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
                 isMentor: true,
                 duration: 5,
                 role: "Captain/Lead Programmer",
-                note: "Creator of this website",
+                note: "",
                 source: "",
             },
             {
@@ -80,7 +80,7 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
                 isMentor: true,
                 duration: 6,
                 role: "Captain/Lead Builder",
-                note: "My name is",
+                note: "",
                 source: "",
             },
             {
@@ -89,7 +89,7 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
                 isMentor: true,
                 duration: 3,
                 role: "CAD Lead",
-                note: "Creator of this website",
+                note: "",
                 source: "",
             },
         ],
@@ -102,40 +102,22 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
 
 export const EVENT_DATES = [
     {
-        dateString: "2026-08-08",
+        dateString: "2026-08-15",
         eventName: "Tabling at The Bean @ 226",
         image: "",
-        dateDisplay: "8/9/26",
-        time: "10AM - 1PM",
+        dateDisplay: "8/15/26",
+        time: "8AM - 1PM",
         description: "Meet with the Blazing Spirits at the Bean to discuss robotics, our outreach, and anything relating to STEM.",
         signupNeeded: false
     },
     {
-        dateString: "2026-08-14",
-        eventName: "CAD BLITZ",
+        dateString: "2026-08-29",
+        eventName: "Tabling at The Bean @ 226",
         image: "",
-        dateDisplay: "8/14/26",
-        time: "6PM - 7:30PM",
-        description: "Quick weekday events meant to give kids easy access to CAD software (Onshape) through interactive activities. Students will leave with a better understanding of CAD design, having created a 3D printed part.",
-        signupNeeded: true
-    },
-    {
-        dateString: "2026-08-21",
-        eventName: "Programming BLITZ",
-        image: "",
-        dateDisplay: "8/21/26",
-        time: "6PM - 7:30PM",
-        description: "Quick weekday event meant to give students intuitive experience with programming through more competitive activities involving Scratch, LEGO SPIKE kits, and other materials.",
-        signupNeeded: true
-    },
-    {
-        dateString: "2026-08-28",
-        eventName: "CAD BLITZ",
-        image: "",
-        dateDisplay: "8/28/26",
-        time: "6PM - 7:30PM",
-        description: "Quick weekday events meant to give kids easy access to CAD software (Onshape) through interactive activities. Students will leave with a better understanding of CAD design, having created a 3D printed part.",
-        signupNeeded: true
+        dateDisplay: "8/29/27",
+        time: "8AM - 1PM",
+        description: "Meet with the Blazing Spirits at the Bean to discuss robotics, our outreach, and anything relating to STEM.",
+        signupNeeded: false
     },
     {
         dateString: "2026-09-12",
@@ -149,14 +131,12 @@ export const EVENT_DATES = [
     
 ]
 export const MARKED_DATES = {
-            "2026-08-08": { selectedColor: 'blue', selected: true },
-            "2026-08-14": { selectedColor: 'orange', selected: true  },
-            "2026-08-21": { selectedColor: 'orange', selected: true  },
-            "2026-08-28": { selectedColor: 'orange', selected: true  },
-            "2026-09-12": { selectedColor: 'blue', selected: true },
+            "2026-08-15": { selectedColor: 'blue', selected: true },
+            "2026-08-29": { selectedColor: 'blue', selected: true  },
+            "2026-09-12": { selectedColor: 'orange', selected: true },
           }
 
-export const IMAGE_LIST = [
+export const SPONSOR_IMAGE_LIST = [
     "https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png",
     "https://m.media-amazon.com/images/I/31epF-8N9LL.png",
     "https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png",

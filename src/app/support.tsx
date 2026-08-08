@@ -14,6 +14,7 @@ export default function SupportUs() {
         alignSelf: "center",
         fontSize: 30,
         marginTop: 10,
+        fontFamily: 'Lato_700Bold'
       },
       supportTypeView: {
         width: 1100,
@@ -28,16 +29,16 @@ export default function SupportUs() {
           <Text style={styles.heroText}>Support the Spirits!</Text>
 
           <View style={styles.supportTypeView}>
-            <Text style={{ marginBottom: 10, fontSize: 25 }}>
+            <Text style={{ marginBottom: 10, fontSize: 25, fontFamily: 'Lato_700Bold' }}>
               Sponorships
             </Text>
             <View style={{ flexDirection: "row", justifyContent: "space-between", width: 1100 }}>
               <Image style={{ width: 325, height: 200, backgroundColor: "#c4c4c4" }} />
               <View style={{ width: 750, justifyContent: "center" }}>
-                <Text style={{ fontSize: 18 }}>Becoming a sponsor helps not only with funding competitions. Through your support, we are also able to continue running events that support FIRST and the town of Windsor, and gain the expertise needed to become future professionals.</Text>
+                <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Becoming a sponsor helps not only with funding competitions. Through your support, we are also able to continue running events that support FIRST and the town of Windsor, and gain the expertise needed to become future professionals.</Text>
                 <Pressable style={{ marginTop: 5 }}>
                   <View style={{ backgroundColor: "#c4c4c4", width: 175, justifyContent: "center", alignItems: "center", paddingVertical: 5 }}>
-                    <Text style={{ fontSize: 18 }}>Become a Sponsor!</Text>
+                    <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Become a Sponsor!</Text>
                   </View>
                 </Pressable>
               </View>
@@ -45,16 +46,16 @@ export default function SupportUs() {
           </View>
 
           <View style={[styles.supportTypeView, { marginTop: 50 }]}>
-            <Text style={{ marginBottom: 10, fontSize: 25 }}>
+            <Text style={{ marginBottom: 10, fontSize: 25, fontFamily: 'Lato_700Bold' }}>
               Donations
             </Text>
             <View style={{ flexDirection: "row", justifyContent: "space-between", width: 1100 }}>
               <Image style={{ width: 325, height: 200, backgroundColor: "#c4c4c4" }} />
               <View style={{ width: 750, justifyContent: "center" }}>
-                <Text style={{ fontSize: 18 }}>Individual donations help to keep our team functioning. As a community team, we are able to give students from around Connecticut and New England a chance to compete with us. So any donation that you can give will be very appreciated.</Text>
+                <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Individual donations help to keep our team functioning. As a community team, we are able to give students from around Connecticut and New England a chance to compete with us. So any donation that you can give will be very appreciated.</Text>
                 <Pressable style={{ marginTop: 5 }}>
                   <View style={{ backgroundColor: "#c4c4c4", width: 140, justifyContent: "center", alignItems: "center", paddingVertical: 5 }}>
-                    <Text style={{ fontSize: 18 }}>Donate Today!</Text>
+                    <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Donate Today!</Text>
                   </View>
                 </Pressable>
               </View>
@@ -74,6 +75,7 @@ export default function SupportUs() {
         alignSelf: "center",
         fontSize: 30,
         marginTop: 10,
+        fontFamily: 'Lato_700Bold'
       },
       supportTypeView: {
         width: 350,
@@ -88,16 +90,16 @@ export default function SupportUs() {
           <Text style={styles.heroText}>Support the Spirits!</Text>
 
           <View style={styles.supportTypeView}>
-            <Text style={{ marginBottom: 10, fontSize: 25 }}>
+            <Text style={{ marginBottom: 10, fontSize: 25, fontFamily: 'Lato_700Bold' }}>
               Sponorships
             </Text>
             <View style={{ flexDirection: "column", justifyContent: "space-between", width: 1100, height: 425 }}>
               <Image style={{ width: 325, height: 200, backgroundColor: "#c4c4c4" }} />
               <View style={{ width: 325, justifyContent: "center", }}>
-                <Text style={{ fontSize: 18 }}>Becoming a sponsor helps not only with funding competitions. Through your support, we are also able to continue running events that support FIRST and the town of Windsor, and gain the expertise needed to become future professionals.</Text>
+                <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Becoming a sponsor helps not only with funding competitions. Through your support, we are also able to continue running events that support FIRST and the town of Windsor, and gain the expertise needed to become future professionals.</Text>
                 <Pressable style={{ marginTop: 5 }}>
                   <View style={{ backgroundColor: "#c4c4c4", width: 175, justifyContent: "center", alignItems: "center", paddingVertical: 5 }}>
-                    <Text style={{ fontSize: 18 }}>Become a Sponsor!</Text>
+                    <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Become a Sponsor!</Text>
                   </View>
                 </Pressable>
               </View>
@@ -105,16 +107,16 @@ export default function SupportUs() {
           </View>
 
           <View style={styles.supportTypeView}>
-            <Text style={{ marginBottom: 10, fontSize: 25 }}>
+            <Text style={{ marginBottom: 10, fontSize: 25, fontFamily: 'Lato_700Bold' }}>
               Donations
             </Text>
             <View style={{ flexDirection: "column", justifyContent: "space-between", width: 1100, height: 425 }}>
               <Image style={{ width: 325, height: 200, backgroundColor: "#c4c4c4" }} />
               <View style={{ width: 325, justifyContent: "center", }}>
-                <Text style={{ fontSize: 18 }}>Individual donations help to keep our team functioning. As a community team, we are able to give students from around Connecticut and New England a chance to compete with us. So any donation that you can give will be very appreciated.</Text>
+                <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Individual donations help to keep our team functioning. As a community team, we are able to give students from around Connecticut and New England a chance to compete with us. So any donation that you can give will be very appreciated.</Text>
                 <Pressable style={{ marginTop: 5 }}>
                   <View style={{ backgroundColor: "#c4c4c4", width: 140, justifyContent: "center", alignItems: "center", paddingVertical: 5 }}>
-                    <Text style={{ fontSize: 18 }}>Donate Today!</Text>
+                    <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Donate Today!</Text>
                   </View>
                 </Pressable>
               </View>

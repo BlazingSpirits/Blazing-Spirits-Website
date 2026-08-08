@@ -7,7 +7,7 @@ import React, { useEffect, useState, useRef, use } from "react";
 import { opacity } from 'react-native-reanimated/lib/typescript/Colors';
 import { withDelay } from 'react-native-reanimated';
 import { Link } from 'expo-router';
-import { EVENT_DATES, IMAGE_LIST } from '../../config';
+import { EVENT_DATES, SPONSOR_IMAGE_LIST } from '../../config';
 import useResponsive from '@/hooks/useResponsive';
 
 import { router } from 'expo-router';
@@ -257,7 +257,7 @@ export default function HomeScreen() {
         </Text>
         <View style={styles.teamSponsorView}>
           <Text style={styles.sponsorHeaderText}>
-            Sponsored Byes 
+            Sponsored By 
           </Text>
           <Image source={{uri: slides[1].image}} style={styles.sponsorImage}/>
         </View>
@@ -542,7 +542,7 @@ export default function HomeScreen() {
               Sponsored By
             </Text>
             <FlatList
-              data={IMAGE_LIST}
+              data={SPONSOR_IMAGE_LIST}
               renderItem={({item})=><Image source={{uri:item}} style={{width:125, height: 85}}/>}
               horizontal={true}
               ItemSeparatorComponent={<View style={{width: 25, height: 10}}></View>}

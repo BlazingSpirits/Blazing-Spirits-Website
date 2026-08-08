@@ -32,12 +32,12 @@ export default function AboutUs() {
 
     const buttonColorSets = [
       {
-        leftColor: "orange",
+        leftColor: "#ffb731",
         rightColor: "#c4c4c4"
       },
       {
         leftColor: "#c4c4c4",
-        rightColor: "orange"
+        rightColor: "#3564ff"
       }
     ]
 
@@ -108,6 +108,7 @@ export default function AboutUs() {
       largeContentView: {
         height: 375,
         width: 1000,
+        marginTop: 10,
         alignSelf: "center",
         alignItems: "center",
         justifyContent: "space-between"
@@ -147,7 +148,7 @@ export default function AboutUs() {
                 <Animated.Image source={{ uri: slides[2].image }} style={[StyleSheet.absoluteFill, { opacity: nextImageOpacity }]} />
                 <Animated.Image source={{ uri: slides[2].image }} style={[StyleSheet.absoluteFill, { opacity: currentImageOpacity }]} />
               </View>
-              <Text style={{ width: 425 }}>Our FIRST Tech Challenge journey started in 2007 (Before every member currently on our team was born). We were initially a part of the Loomis Chaffee School, but later separated into our own FTC team</Text>
+              <Text style={{ width: 425, fontFamily: "Lato_400Regular", fontSize: 18 }}>Our FIRST Tech Challenge journey started in 2007 (Before every member currently on our team was born). We were initially a part of the Loomis Chaffee School, but later separated into our own FTC team</Text>
             </View>
             <View style={{ width: 550, height: 50, flexDirection: "row", justifyContent: "space-between", alignItems: 'center', paddingHorizontal: 50 }}>
               <View style={[styles.circle, { backgroundColor: colorList[0] }]}></View>
@@ -165,7 +166,7 @@ export default function AboutUs() {
                 <Animated.Image source={{ uri: slides[2].image }} style={[StyleSheet.absoluteFill, { opacity: nextImageOpacity }]} />
                 <Animated.Image source={{ uri: slides[2].image }} style={[StyleSheet.absoluteFill, { opacity: currentImageOpacity }]} />
               </View>
-              <Text style={{ width: 425 }}>Our FIRST Tech Challenge journey started in 2007 (Before every member currently on our team was born). We were initially a part of the Loomis Chaffee School, but later separated into our own FTC team</Text>
+              <Text style={{ width: 425, fontFamily: "Lato_400Regular", fontSize: 18 }}>Our FIRST Tech Challenge journey started in 2007 (Before every member currently on our team was born). We were initially a part of the Loomis Chaffee School, but later separated into our own FTC team</Text>
             </View>
             <View style={{ width: 550, height: 50, flexDirection: "row", justifyContent: "space-between", alignItems: 'center', paddingHorizontal: 50 }}>
               <View style={[styles.circle, { backgroundColor: colorList[0] }]}></View>
@@ -200,7 +201,7 @@ export default function AboutUs() {
                   borderBottomLeftRadius: 5,
                 }}
               >
-                <Text>Members</Text>
+                <Text style={{fontFamily: "Lato_400Regular"}}>Members</Text>
               </View>
             </Pressable>
 
@@ -216,7 +217,7 @@ export default function AboutUs() {
                   borderBottomRightRadius: 5,
                 }}
               >
-                <Text>Mentors</Text>
+                <Text style={{fontFamily: "Lato_400Regular"}}>Mentors</Text>
               </View>
             </Pressable>
           </View>
@@ -346,6 +347,7 @@ export default function AboutUs() {
       largeContentView: {
         height: 215,
         width: 375,
+        marginTop: 10,
         alignSelf: "center",
         justifyContent: "space-between"
       },
@@ -389,7 +391,7 @@ export default function AboutUs() {
                   <View style={[styles.circle, { backgroundColor: colorList[2] }]}></View>
                 </View>
               </View>
-              <Text style={{ width: 185 }}>Our FIRST Tech Challenge journey started in 2007 (Before every member currently on our team was born). We were initially a part of the Loomis Chaffee School, but later separated into our own FTC team</Text>
+              <Text style={{ width: 185, fontFamily: 'Lato_400Regular' }}>Our FIRST Tech Challenge journey started in 2007 (Before every member currently on our team was born). We were initially a part of the Loomis Chaffee School, but later separated into our own FTC team</Text>
           </View>
         </View>
 
@@ -407,7 +409,7 @@ export default function AboutUs() {
                   <View style={[styles.circle, { backgroundColor: colorList[2] }]}></View>
                 </View>
               </View>
-              <Text style={{ width: 185 }}>Our FIRST Tech Challenge journey started in 2007 (Before every member currently on our team was born). We were initially a part of the Loomis Chaffee School, but later separated into our own FTC team</Text>
+              <Text style={{ width: 185, fontFamily: 'Lato_400Regular' }}>Our FIRST Tech Challenge journey started in 2007 (Before every member currently on our team was born). We were initially a part of the Loomis Chaffee School, but later separated into our own FTC team</Text>
           </View>
         </View>
 
@@ -438,7 +440,7 @@ export default function AboutUs() {
                     borderBottomLeftRadius: 5,
                   }}
                 >
-                  <Text>Members</Text>
+                  <Text style={{fontFamily: 'Lato_400Regular'}}>Members</Text>
                 </View>
               </Pressable>
 
@@ -454,7 +456,7 @@ export default function AboutUs() {
                     borderBottomRightRadius: 5,
                   }}
                 >
-                  <Text>Mentors</Text>
+                  <Text style={{fontFamily: 'Lato_400Regular'}}>Mentors</Text>
                 </View>
               </Pressable>
             </View>
