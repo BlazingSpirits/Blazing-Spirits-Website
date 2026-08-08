@@ -114,7 +114,7 @@ export const EVENT_DATES = [
         dateString: "2026-08-29",
         eventName: "Tabling at The Bean @ 226",
         image: "",
-        dateDisplay: "8/29/27",
+        dateDisplay: "8/29/26",
         time: "8AM - 1PM",
         description: "Meet with the Blazing Spirits at the Bean to discuss robotics, our outreach, and anything relating to STEM.",
         signupNeeded: false

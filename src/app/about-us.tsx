@@ -391,7 +391,7 @@ export default function AboutUs() {
                   <View style={[styles.circle, { backgroundColor: colorList[2] }]}></View>
                 </View>
               </View>
-              <Text style={{ width: 185, fontFamily: 'Lato_400Regular' }}>Our FIRST Tech Challenge journey started in 2007 (Before every member currently on our team was born). We were initially a part of the Loomis Chaffee School, but later separated into our own FTC team</Text>
+              <Text style={{ width: 185, fontFamily: 'Lato_400Regular' }}>Info coming soon</Text>
           </View>
         </View>
 
@@ -409,7 +409,7 @@ export default function AboutUs() {
                   <View style={[styles.circle, { backgroundColor: colorList[2] }]}></View>
                 </View>
               </View>
-              <Text style={{ width: 185, fontFamily: 'Lato_400Regular' }}>Our FIRST Tech Challenge journey started in 2007 (Before every member currently on our team was born). We were initially a part of the Loomis Chaffee School, but later separated into our own FTC team</Text>
+              <Text style={{ width: 185, fontFamily: 'Lato_400Regular' }}>Info coming soon</Text>
           </View>
         </View>
 
