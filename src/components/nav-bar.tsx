@@ -1,6 +1,6 @@
 import * as Device from 'expo-device';
 import { Platform, StyleSheet } from 'react-native';
-import { Link } from 'expo-router';
+import { Link, usePathname } from 'expo-router';
 import { View, Text, Image, Dimensions, Pressable, Modal} from "react-native";
 import { useState } from 'react';
 import { useWindowDimensions } from "react-native";
@@ -15,6 +15,14 @@ export default function NavBar() {
   const { isMobile } = useResponsive();
 
   const [modalVisible, setModalVisible] = useState(false);
+  const pathname = usePathname();
+
+  const navLinkStyle = (route: string) => ({
+    fontSize: 18,
+    fontFamily: 'Lato_400Regular',
+    borderBottomWidth: pathname === route ? 2 : 0,
+    paddingBottom: 5,
+  });
 
   const styles = StyleSheet.create({
     navBar:{
@@ -77,7 +85,7 @@ export default function NavBar() {
   return (
     <>
       {!modalVisible ? (
-        <View style={styles.navBar}>
+        <View style={[styles.navBar]}>
           <Link href="/">
             <View style={styles.logoView}>
               <Image style={styles.logoImage} resizeMode='contain' source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWYp2oJD7ooZ3R9cVnuiZLjG1g79_XCr06wvUjCI8d5GN_OigmEafgFx8&s=10" }} />
@@ -92,19 +100,19 @@ export default function NavBar() {
 
 
           {!isMobile ? (
-            <View style={styles.directLinksView}>
+            <View style={[styles.directLinksView,]}>
               <Link href="/about-us">
-                <Text style={styles.directLinkText}>
+                <Text style={navLinkStyle("/about-us")}>
                   About Us
                 </Text>
               </Link>
               <Link href="/events">
-                <Text style={styles.directLinkText}>
+                <Text style={navLinkStyle("/events")}>
                   Events
                 </Text>
               </Link>
               <Link href="/support">
-                <Text style={styles.directLinkText}>
+                <Text style={navLinkStyle("/support")}>
                   Support Us
                 </Text>
               </Link>
