@@ -8,16 +8,23 @@ import { JumpingTransition } from 'react-native-reanimated';
 import { WebView } from 'react-native-webview';
 import useResponsive from '@/hooks/useResponsive';
 import { useLocalSearchParams } from 'expo-router';
+import { useWindowDimensions } from "react-native";
 import { router } from 'expo-router';
 
 export default function Events() {
   
   const {isMobile} = useResponsive();
+  
 
   function DesktopEvents(){
+    const {width, height} = useWindowDimensions();
     const isoDateString = new Date().toISOString().split('T')[0];
     const [currentMonth, setCurrentMonth] = useState(isoDateString);
-    const [eventDetailsHeight, setEventDetailsHeight] = useState(375);
+    const [eventDetailsHeight, setEventDetailsHeight] = useState(375 + 0.25 * (height-601));
+    const eventDetailsWidth =  425 + 0.5 * (width-1272)
+    const calendarWidth = 700 + 0.5 * (width - 1272);
+    const calendarHeight = 375 + 0.25 * (height - 601);
+    const eventFont = 15 + (width-1272)/200;
 
     const { event_index } = useLocalSearchParams();
     const [urlEventIndex, setUrlEventIndex] = useState(Array.isArray(event_index)
@@ -37,9 +44,9 @@ export default function Events() {
         setUrlEventIndex(index);
 
         if (EVENT_DATES[index].signupNeeded) {
-          setEventDetailsHeight(450);
+          setEventDetailsHeight(450 + 0.25 * (height-601));
         } else {
-          setEventDetailsHeight(375)
+          setEventDetailsHeight(375 + 0.25 * (height-601))
         }
       } else {
         setUrlEventIndex(null);
@@ -65,8 +72,8 @@ export default function Events() {
               style={{
                 borderWidth: 1,
                 borderColor: 'gray',
-                height: 375,
-                width: 700,
+                height: calendarHeight,
+                width: calendarWidth,
               }}
               current={currentMonth}
 
@@ -82,11 +89,11 @@ export default function Events() {
               markedDates={MARKED_DATES}
             />
             {urlEventIndex !== null && urlEventIndex !== undefined ? (
-              <View style={{ flexDirection: "column", width: 425, height: eventDetailsHeight, justifyContent: "center" }}>
-                <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "space-between", height: 350 }}>
+              <View style={{ flexDirection: "column", width: eventDetailsWidth, height: eventDetailsHeight, justifyContent: "center" }}>
+                <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "space-between", height: eventDetailsHeight-40 }}>
                   <Text style={styles.eventNameHeader}>{EVENT_DATES[urlEventIndex].eventName}</Text>
-                  <Image style={{ backgroundColor: "grey", width: 425, height: 225 }} />
-                  <Text style={{fontSize: 15, fontFamily:"Lato_400Regular"}}>{EVENT_DATES[urlEventIndex].description} ({EVENT_DATES[urlEventIndex].dateDisplay} • {EVENT_DATES[urlEventIndex].time})</Text>
+                  <Image style={{ backgroundColor: "grey", width: 425 + 0.25 * (width-1272), height: 225 + 0.125 * (height-601) }} />
+                  <Text style={{fontSize: eventFont, fontFamily:"Lato_400Regular", textAlign: "center"}}>{EVENT_DATES[urlEventIndex].description} ({EVENT_DATES[urlEventIndex].dateDisplay} • {EVENT_DATES[urlEventIndex].time})</Text>
                 </View>
                 {EVENT_DATES[urlEventIndex].signupNeeded ? (
                   <View /* Button*/
@@ -119,7 +126,7 @@ export default function Events() {
 
               </View>
             ) : (
-              <View style={{ justifyContent: "center", alignItems: "center", width: 425, height: 350 }}>
+              <View style={{ justifyContent: "center", alignItems: "center", width: eventDetailsWidth, height: eventDetailsHeight }}>
                 <Text style={{fontSize: 20, fontFamily:"Lato_400Regular"}}>
                   Select a date to view an event
                 </Text>
@@ -309,10 +316,6 @@ function MobileEvents() {
     </View>
   );
 }
-
-
-
-
 
   return isMobile ? <MobileEvents/> : <DesktopEvents/>;
  

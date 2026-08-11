@@ -27,11 +27,12 @@ export default function NavBar() {
   const styles = StyleSheet.create({
     navBar:{
       width: width,
-      height: 70,
+      height: 75,
       paddingHorizontal: 25,
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
+      
     },
     logoView:{
       width: 270,
