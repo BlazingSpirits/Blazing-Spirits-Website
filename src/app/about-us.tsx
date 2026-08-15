@@ -61,7 +61,7 @@ export default function AboutUs() {
         rightColor: "#3564ff"
       }
     ]
-
+    //This is a comment
     const [buttonIndex, setButtonIndex] = useState(0);
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
