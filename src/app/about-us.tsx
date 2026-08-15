@@ -9,23 +9,44 @@ export default function AboutUs() {
   const {isMobile} = useResponsive();
 
   function DesktopAboutUs(){
-    const slides = [
+    const ourHistorySlides = [
       {
         textColor: "orange",
         text: "Innovation.",
-        image: "https://yt3.googleusercontent.com/bMktDT_cgZ2uq8huFiODYs1PXm9vmRBriOS3RMR4aHzuI14CdxrH0EvsDVnepNU3MkhR__wPBQ=s900-c-k-c0x00ffffff-no-rj",
+        image: require("website_130/assets/images/our-history-1.png"),
         description: ""
       },
       {
         textColor: "blue",
         text: "Initiative.",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRZmgtC_iRIpDJd0ruSeILRcPdftmUuGW1BHJNTvMcZxRnMr9tIiTIAHw&s=10",
+        image: require("website_130/assets/images/our-history-2.png"),
         description: ""
       },
       {
         textColor: "white",
         text: "Inspiration.",
-        image: "https://scontent-lga3-3.xx.fbcdn.net/v/t39.30808-6/702215295_1315125140765970_4747046272501456966_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1032&ctp=s2048x1032&_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=hCsZzZycK4kQ7kNvwG9yLT0&_nc_oc=AdpHnZZKsi3OzJd7ujfwizN21JDDNUrQ1Nfdry_hBFWXFZKAvx4SWQ5JqQcD_FIYIng&_nc_zt=23&_nc_ht=scontent-lga3-3.xx&_nc_gid=G4FFgvR4UFMI9J-wR0WcyA&_nc_ss=7b2a8&oh=00_AQBQ4xWYh31oT0qgggpJlEJ0eBgdHGSPDcycYlQ7YT2nkQ&oe=6A558D66",
+        image: require("website_130/assets/images/our-history-3.png"),
+        description: ""
+      },
+    ];
+
+    const ourRobotSlides = [
+      {
+        textColor: "orange",
+        text: "Innovation.",
+        image: require("website_130/assets/images/our-robot-2024.png"),
+        description: ""
+      },
+      {
+        textColor: "blue",
+        text: "Initiative.",
+        image: require("website_130/assets/images/our-robot-2025.png"),
+        description: ""
+      },
+      {
+        textColor: "white",
+        text: "Inspiration.",
+        image: require("website_130/assets/images/our-robot-2026.png"),
         description: ""
       },
     ];
@@ -44,7 +65,7 @@ export default function AboutUs() {
     const [buttonIndex, setButtonIndex] = useState(0);
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const transitionDelay = 15000;
+    const transitionDelay = 3000;
 
     const [colorList, setColorList] = useState<string[]>(["orange", "grey", "grey"]);
     const [currentCircleIndex, setCircleIndex] = useState(0);
@@ -60,19 +81,19 @@ export default function AboutUs() {
           Animated.parallel([
             Animated.timing(currentImageOpacity, {
               toValue: 0,
-              duration: 3000,
+              duration: 1500,
               useNativeDriver: true
             }),
             Animated.timing(nextImageOpacity, {
               toValue: 1,
-              duration: 3000,
+              duration: 1500,
               useNativeDriver: true
             }),
           ])
         ]),
       ]).start(() => {
         // Switch the image
-        setCurrentImageIndex(prev => (prev + 1) % slides.length);
+        setCurrentImageIndex(prev => (prev + 1) % ourHistorySlides.length);
         updateCircleColorList();
 
         // Reset for the next transition
@@ -145,10 +166,10 @@ export default function AboutUs() {
           <View style={styles.contextView}>
             <View style={styles.miniSlideshowView}>
               <View style={{ width: 550, height: 250, backgroundColor: "grey" }}>
-                <Animated.Image source={{ uri: slides[2].image }} style={[StyleSheet.absoluteFill, { opacity: nextImageOpacity }]} />
-                <Animated.Image source={{ uri: slides[2].image }} style={[StyleSheet.absoluteFill, { opacity: currentImageOpacity }]} />
+                <Animated.Image source={ourHistorySlides[(currentImageIndex+1)%3].image } style={[{width: 550, height: 250}, { opacity: nextImageOpacity }]} resizeMode='cover'/>
+                <Animated.Image source={ourHistorySlides[currentImageIndex].image } style={[{width: 550, height: 250,  position: "absolute"}, { opacity: currentImageOpacity }]} resizeMode='cover'/>
               </View>
-              <Text style={{ width: 425, fontFamily: "Lato_400Regular", fontSize: 18 }}>Our FIRST Tech Challenge journey started in 2007 (Before every member currently on our team was born). We were initially a part of the Loomis Chaffee School, but later separated into our own FTC team</Text>
+              <Text style={{ width: 425, fontFamily: "Lato_400Regular", fontSize: 18 }}>Our FIRST Tech Challenge journey started in 2005 before all current members of this team were born. We were originally a part of the Loomis Chaffee School called Blazing Paranormals. In 2016, we separated from them and became The Blazing Spirits. As a community team, we accept anyone from the New England region.</Text>
             </View>
             <View style={{ width: 550, height: 50, flexDirection: "row", justifyContent: "space-between", alignItems: 'center', paddingHorizontal: 50 }}>
               <View style={[styles.circle, { backgroundColor: colorList[0] }]}></View>
@@ -163,10 +184,10 @@ export default function AboutUs() {
           <View style={styles.contextView}>
             <View style={styles.miniSlideshowView}>
               <View style={{ width: 550, height: 250, backgroundColor: "grey" }}>
-                <Animated.Image source={{ uri: slides[2].image }} style={[StyleSheet.absoluteFill, { opacity: nextImageOpacity }]} />
-                <Animated.Image source={{ uri: slides[2].image }} style={[StyleSheet.absoluteFill, { opacity: currentImageOpacity }]} />
+                <Animated.Image source={ourRobotSlides[(currentImageIndex+1)%3].image} style={[{width: 550, height: 250}, { opacity: nextImageOpacity }]} resizeMode='cover'/>
+                <Animated.Image source={ourRobotSlides[currentImageIndex].image} style={[{width: 550, height: 250, position: "absolute"}, { opacity: currentImageOpacity }]} resizeMode='cover'/>
               </View>
-              <Text style={{ width: 425, fontFamily: "Lato_400Regular", fontSize: 18 }}>Our FIRST Tech Challenge journey started in 2007 (Before every member currently on our team was born). We were initially a part of the Loomis Chaffee School, but later separated into our own FTC team</Text>
+              <Text style={{ width: 425, fontFamily: "Lato_400Regular", fontSize: 18 }}>Every year, our team is tasked with to complete a certain set of tasks using our robot. However, each year has vastly different objectives, whether it's depositing samples or launching artifacts. This leads to unique robot designs and fabrications every year, allowing students to improve their problem-solving skills.</Text>
             </View>
             <View style={{ width: 550, height: 50, flexDirection: "row", justifyContent: "space-between", alignItems: 'center', paddingHorizontal: 50 }}>
               <View style={[styles.circle, { backgroundColor: colorList[0] }]}></View>
@@ -222,23 +243,15 @@ export default function AboutUs() {
             </Pressable>
           </View>
 
-
+          
           <FlatList
-            data={TEAM_LIST[buttonIndex]}
+            data={TEAM_LIST[buttonIndex].flat()}
             keyExtractor={(_, index) => index.toString()}
+            contentContainerStyle={{width: 800}}
+            numColumns={3}
+            ItemSeparatorComponent={<View style={{ height: 50}}></View>}
             renderItem={({ item }) => (
-              <View
-                style={{
-                  width: 800,
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  marginBottom: 50
-                }}
-              >
-                {item.map((profile) => (
-                  <ProfileIcon key={profile.id} {...profile} />
-                ))}
-              </View>
+              <ProfileIcon key={item.id} {...item}/>
             )}
           />
         </View>
@@ -248,35 +261,56 @@ export default function AboutUs() {
   }
 
   function MobileAboutUs(){
-    const slides = [
-    {
-      textColor: "orange",
-      text: "Innovation.",
-      image: "https://yt3.googleusercontent.com/bMktDT_cgZ2uq8huFiODYs1PXm9vmRBriOS3RMR4aHzuI14CdxrH0EvsDVnepNU3MkhR__wPBQ=s900-c-k-c0x00ffffff-no-rj",
-      description: ""
-    },
-    {
-      textColor: "blue",
-      text: "Initiative.",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRZmgtC_iRIpDJd0ruSeILRcPdftmUuGW1BHJNTvMcZxRnMr9tIiTIAHw&s=10",
-      description: ""
-    },
-    {
-      textColor: "white",
-      text: "Inspiration.",
-      image: "https://scontent-lga3-3.xx.fbcdn.net/v/t39.30808-6/702215295_1315125140765970_4747046272501456966_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1032&ctp=s2048x1032&_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=hCsZzZycK4kQ7kNvwG9yLT0&_nc_oc=AdpHnZZKsi3OzJd7ujfwizN21JDDNUrQ1Nfdry_hBFWXFZKAvx4SWQ5JqQcD_FIYIng&_nc_zt=23&_nc_ht=scontent-lga3-3.xx&_nc_gid=G4FFgvR4UFMI9J-wR0WcyA&_nc_ss=7b2a8&oh=00_AQBQ4xWYh31oT0qgggpJlEJ0eBgdHGSPDcycYlQ7YT2nkQ&oe=6A558D66",
-      description: ""
-    },
-  ];
+    const ourHistorySlides = [
+      {
+        textColor: "orange",
+        text: "Innovation.",
+        image: require("website_130/assets/images/our-history-1.png"),
+        description: ""
+      },
+      {
+        textColor: "blue",
+        text: "Initiative.",
+        image: require("website_130/assets/images/our-history-2.png"),
+        description: ""
+      },
+      {
+        textColor: "white",
+        text: "Inspiration.",
+        image: require("website_130/assets/images/our-history-3.png"),
+        description: ""
+      },
+    ];
+
+    const ourRobotSlides = [
+      {
+        textColor: "orange",
+        text: "Innovation.",
+        image: require("website_130/assets/images/our-robot-2024.png"),
+        description: ""
+      },
+      {
+        textColor: "blue",
+        text: "Initiative.",
+        image: require("website_130/assets/images/our-robot-2025.png"),
+        description: ""
+      },
+      {
+        textColor: "white",
+        text: "Inspiration.",
+        image: require("website_130/assets/images/our-robot-2026.png"),
+        description: ""
+      },
+    ];
 
   const buttonColorSets = [
     {
-      leftColor: "orange",
-      rightColor: "grey"
+      leftColor: "#ffb731",
+      rightColor: "#c4c4c4"
     },
     {
-      leftColor: "grey",
-      rightColor: "orange"
+      leftColor: "#c4c4c4",
+      rightColor: "#3564ff"
     }
   ]
 
@@ -311,7 +345,7 @@ export default function AboutUs() {
       ]),
     ]).start(() => {
       // Switch the image
-      setCurrentImageIndex(prev => (prev + 1) % slides.length);
+      setCurrentImageIndex(prev => (prev + 1) % ourHistorySlides.length);
       updateCircleColorList();
       
       // Reset for the next transition
@@ -382,8 +416,8 @@ export default function AboutUs() {
           <View style={styles.contextView}>
               <View>
                 <View style={{ width: 175, height: 125, backgroundColor: "grey" }}>
-                  <Animated.Image source={{ uri: slides[2].image }} style={[StyleSheet.absoluteFill, { opacity: nextImageOpacity }]} />
-                  <Animated.Image source={{ uri: slides[2].image }} style={[StyleSheet.absoluteFill, { opacity: currentImageOpacity }]} />
+                  <Animated.Image source={ourHistorySlides[(currentImageIndex+1)%3].image } style={[{width: 175, height: 125}, { opacity: nextImageOpacity }]} />
+                  <Animated.Image source={ourHistorySlides[currentImageIndex].image } style={[{width: 175, height: 125, position: "absolute"}, { opacity: currentImageOpacity }]} />
                 </View>
                 <View style={{ width: 175, height: 50, flexDirection: "row", justifyContent: "space-evenly", alignItems: 'center'}}>
                   <View style={[styles.circle, { backgroundColor: colorList[0] }]}></View>
@@ -391,7 +425,7 @@ export default function AboutUs() {
                   <View style={[styles.circle, { backgroundColor: colorList[2] }]}></View>
                 </View>
               </View>
-              <Text style={{ width: 185, fontFamily: 'Lato_400Regular' }}>Info coming soon</Text>
+              <Text style={{ width: 185, fontFamily: 'Lato_400Regular' }}>Our FIRST Tech Challenge journey started in 2005 before all current members of this team were born. We were originally a part of the Loomis Chaffee School called Blazing Paranormals. In 2016, we separated from them and became The Blazing Spirits. As a community team, we accept anyone from the New England region.</Text>
           </View>
         </View>
 
@@ -400,8 +434,8 @@ export default function AboutUs() {
           <View style={styles.contextView}>
               <View>
                 <View style={{ width: 175, height: 125, backgroundColor: "grey" }}>
-                  <Animated.Image source={{ uri: slides[2].image }} style={[StyleSheet.absoluteFill, { opacity: nextImageOpacity }]} />
-                  <Animated.Image source={{ uri: slides[2].image }} style={[StyleSheet.absoluteFill, { opacity: currentImageOpacity }]} />
+                  <Animated.Image source={ourRobotSlides[(currentImageIndex+1)%3].image } style={[{width: 175, height: 125}, { opacity: nextImageOpacity }]} />
+                  <Animated.Image source={ourRobotSlides[currentImageIndex].image } style={[{width: 175, height: 125, position: "absolute"}, { opacity: currentImageOpacity }]} resizeMode='cover'/>
                 </View>
                 <View style={{ width: 175, height: 50, flexDirection: "row", justifyContent: "space-evenly", alignItems: 'center'}}>
                   <View style={[styles.circle, { backgroundColor: colorList[0] }]}></View>
@@ -409,7 +443,7 @@ export default function AboutUs() {
                   <View style={[styles.circle, { backgroundColor: colorList[2] }]}></View>
                 </View>
               </View>
-              <Text style={{ width: 185, fontFamily: 'Lato_400Regular' }}>Info coming soon</Text>
+              <Text style={{ width: 185, fontFamily: 'Lato_400Regular' }}>Every year, our team is tasked with to complete a certain set of tasks using our robot. However, each year has vastly different objectives, whether it's depositing samples or launching artifacts. This leads to unique robot designs and fabrications every year, allowing students to improve their problem-solving skills.</Text>
           </View>
         </View>
 

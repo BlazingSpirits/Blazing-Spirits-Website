@@ -24,17 +24,17 @@ export default function HomeScreen() {
       {
         textColor: "orange",
         text: "Innovation.",
-        image: "https://scontent-lga3-1.xx.fbcdn.net/v/t39.30808-6/486645231_986508076961013_2841876963283168895_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1366&ctp=s2048x1366&_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=_39xAR6fRZwQ7kNvwEF5l4S&_nc_oc=AdqvmL1PvFzb_rfgfZb9LJWsVvjXZ8lva1G0Yd-0oANTt4_0lz_6nEaKG1m96CTc5cY&_nc_zt=23&_nc_ht=scontent-lga3-1.xx&_nc_gid=sgCN63bpo3PqoUgLkS0hYw&_nc_ss=7b2a8&oh=00_AQD8phZmrMaVTsiDUC8wT-J7zZ5K34vCKdgV_PRWPFDvtA&oe=6A55ABD8"
+        image: require("website_130/assets/images/innovation-photo.png")
       },
       {
         textColor: "blue",
         text: "Initiative.",
-        image: "https://scontent-lga3-3.xx.fbcdn.net/v/t39.30808-6/548207750_1116500543961765_2786141985300593860_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=PQoRO41KWrkQ7kNvwHq2kIf&_nc_oc=AdpV1YpVqFF0OvDJpzQBL2UVTnJSuUqLE3j4LiU9fbSTmID3ZzwO6PB8s1OeG-T09r8&_nc_zt=23&_nc_ht=scontent-lga3-3.xx&_nc_gid=m2C8m0Zq4nhW-KiP1u7vGg&_nc_ss=7b2a8&oh=00_AQBNhcBrkKJJbRFKbN1Il4DdyLJMGWlSn1Fe4E2DGWB7TA&oe=6A5595D1"
+        image: require("website_130/assets/images/initiative-photo.jpeg")
       },
       {
         textColor: "white",
         text: "Inspiration.",
-        image: "https://scontent-lga3-3.xx.fbcdn.net/v/t39.30808-6/702215295_1315125140765970_4747046272501456966_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1032&ctp=s2048x1032&_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=hCsZzZycK4kQ7kNvwG9yLT0&_nc_oc=AdpHnZZKsi3OzJd7ujfwizN21JDDNUrQ1Nfdry_hBFWXFZKAvx4SWQ5JqQcD_FIYIng&_nc_zt=23&_nc_ht=scontent-lga3-3.xx&_nc_gid=G4FFgvR4UFMI9J-wR0WcyA&_nc_ss=7b2a8&oh=00_AQBQ4xWYh31oT0qgggpJlEJ0eBgdHGSPDcycYlQ7YT2nkQ&oe=6A558D66"
+        image: require("website_130/assets/images/inspiration-photo.png")
       },
     ];
     const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -171,7 +171,6 @@ export default function HomeScreen() {
       sponsorImage: {
         width: 900,
         height: 225,
-        backgroundColor: "green",
       },
       hero: {
         height: 500,
@@ -243,12 +242,14 @@ export default function HomeScreen() {
     return (
     
     <ScrollView contentContainerStyle={{paddingBottom: 100}} style={styles.container}>
-      <View style={{ backgroundColor: "grey", flexDirection: "row", alignItems: "center", width: width, height: height-70}}>
-        <Animated.Image source={{uri: slides[(currentImageIndex + 1) % 3].image}} style={[StyleSheet.absoluteFill, { opacity: nextImageOpacity}]} />
-        <Animated.Image source={{uri: slides[currentImageIndex].image}} style={[StyleSheet.absoluteFill, { opacity: currentImageOpacity}]} />
-        <View style={[StyleSheet.absoluteFill, {backgroundColor: "rgba(0, 0, 0, 0.15)"}]}></View>
-        <Text style={[styles.slideshowText]}>Sparking</Text>
-        <Animated.Text style={[{ transform: [{ translateX: textXTranslate }], opacity: textOpacity}, styles.slideshowText, {marginLeft: 10, color: slides[currentTextIndex].textColor}]}>{slides[currentTextIndex].text}</Animated.Text>
+      <View style={{ backgroundColor: "grey", flexDirection: "row", alignItems: "center", width: width, height: height-70, position: "relative"}}>
+          <Animated.Image source={slides[(currentImageIndex + 1) % 3].image} style={[{ width: width, height: height - 70 }, { opacity: nextImageOpacity }]} resizeMode="cover" />
+          <Animated.Image source={slides[currentImageIndex].image} style={[{ width: width, height: height - 70, position: "absolute", top: 0, left: 0 }, { opacity: currentImageOpacity }]} resizeMode="cover" />
+          <View style={[{ width: width, height: height - 70, position: "absolute", top: 0, left: 0 }, { backgroundColor: "rgba(0, 0, 0, 0.15)" }]}></View>
+          <Animated.View style={{position: "absolute", flexDirection: "row"}}>
+            <Text style={[styles.slideshowText]}>Sparking</Text>
+            <Animated.Text style={[{ transform: [{ translateX: textXTranslate }], opacity: textOpacity }, styles.slideshowText, { marginLeft: 10, color: slides[currentTextIndex].textColor }]}>{slides[currentTextIndex].text}</Animated.Text>
+          </Animated.View>
       </View>
 
       <View style={styles.teamInfoView}>
@@ -257,9 +258,9 @@ export default function HomeScreen() {
         </Text>
         <View style={styles.teamSponsorView}>
           <Text style={styles.sponsorHeaderText}>
-            Sponsored By 
+            Sponsored By te
           </Text>
-          <Image source={{uri: slides[1].image}} style={styles.sponsorImage}/>
+          <Image source={require("website_130/assets/images/logo-collage.png")} resizeMode='contain' style={styles.sponsorImage}/>
         </View>
       </View>
 
@@ -273,7 +274,7 @@ export default function HomeScreen() {
               }
             })}}>
             <View style={styles.eventView}>
-                <Image style={styles.eventImage} source={{ uri: slides[0].image }} />
+                <Image style={styles.eventImage} source={EVENT_DATES[0].image} />
                 <View style={styles.eventTextView}>
                   <Text style={styles.eventNameHeader}>{EVENT_DATES[0].eventName}</Text>
                   <Text style={styles.eventDescription}>{EVENT_DATES[0].description}</Text>
@@ -287,7 +288,7 @@ export default function HomeScreen() {
               }
             })}}>
           <View style={styles.eventView}>
-            <Image style={styles.eventImage} source={{uri: slides[0].image}}/>
+            <Image style={styles.eventImage} source={EVENT_DATES[1].image}/>
             <View style={styles.eventTextView}>
               <Text style={styles.eventNameHeader}>{EVENT_DATES[1].eventName}</Text>
               <Text style={styles.eventDescription}>{EVENT_DATES[1].description}</Text>
@@ -309,17 +310,17 @@ export default function HomeScreen() {
       {
         textColor: "orange",
         text: "Innovation.",
-        image: "https://scontent-lga3-1.xx.fbcdn.net/v/t39.30808-6/486645231_986508076961013_2841876963283168895_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1366&ctp=s2048x1366&_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_ohc=_39xAR6fRZwQ7kNvwEF5l4S&_nc_oc=AdqvmL1PvFzb_rfgfZb9LJWsVvjXZ8lva1G0Yd-0oANTt4_0lz_6nEaKG1m96CTc5cY&_nc_zt=23&_nc_ht=scontent-lga3-1.xx&_nc_gid=sgCN63bpo3PqoUgLkS0hYw&_nc_ss=7b2a8&oh=00_AQD8phZmrMaVTsiDUC8wT-J7zZ5K34vCKdgV_PRWPFDvtA&oe=6A55ABD8"
+        image: require("website_130/assets/images/innovation-photo.png")
       },
       {
         textColor: "blue",
         text: "Initiative.",
-        image: "https://scontent-lga3-3.xx.fbcdn.net/v/t39.30808-6/548207750_1116500543961765_2786141985300593860_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=PQoRO41KWrkQ7kNvwHq2kIf&_nc_oc=AdpV1YpVqFF0OvDJpzQBL2UVTnJSuUqLE3j4LiU9fbSTmID3ZzwO6PB8s1OeG-T09r8&_nc_zt=23&_nc_ht=scontent-lga3-3.xx&_nc_gid=m2C8m0Zq4nhW-KiP1u7vGg&_nc_ss=7b2a8&oh=00_AQBNhcBrkKJJbRFKbN1Il4DdyLJMGWlSn1Fe4E2DGWB7TA&oe=6A5595D1"
+        image: require("website_130/assets/images/initiative-photo.jpeg")
       },
       {
         textColor: "white",
         text: "Inspiration.",
-        image: "https://scontent-lga3-3.xx.fbcdn.net/v/t39.30808-6/702215295_1315125140765970_4747046272501456966_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1032&ctp=s2048x1032&_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=hCsZzZycK4kQ7kNvwG9yLT0&_nc_oc=AdpHnZZKsi3OzJd7ujfwizN21JDDNUrQ1Nfdry_hBFWXFZKAvx4SWQ5JqQcD_FIYIng&_nc_zt=23&_nc_ht=scontent-lga3-3.xx&_nc_gid=G4FFgvR4UFMI9J-wR0WcyA&_nc_ss=7b2a8&oh=00_AQBQ4xWYh31oT0qgggpJlEJ0eBgdHGSPDcycYlQ7YT2nkQ&oe=6A558D66"
+        image: require("website_130/assets/images/inspiration-photo.png")
       },
     ];
     const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -526,11 +527,15 @@ export default function HomeScreen() {
     return(
       <ScrollView contentContainerStyle={{paddingBottom: 30}} style={styles.container}>
         <View style={{ backgroundColor: "grey", flexDirection: "row", alignItems: "center", width: width, height: height/2 - 70 }}>
-          <Animated.Image source={{ uri: slides[(currentImageIndex + 1) % 3].image }} style={[StyleSheet.absoluteFill, { opacity: nextImageOpacity }]} />
-          <Animated.Image source={{ uri: slides[currentImageIndex].image }} style={[StyleSheet.absoluteFill, { opacity: currentImageOpacity }]} />
-          <View style={[StyleSheet.absoluteFill, { backgroundColor: "rgba(0, 0, 0, 0.15)" }]}></View>
-          <Text style={[styles.slideshowText]}>Sparking</Text>
-          <Animated.Text style={[{ transform: [{ translateX: textXTranslate }], opacity: textOpacity }, styles.slideshowText, { marginLeft: 5, color: slides[currentTextIndex].textColor }]}>{slides[currentTextIndex].text}</Animated.Text>
+          <Animated.Image source={slides[(currentImageIndex + 1) % 3].image } style={[{ width: width, height: height/2 - 70 }, { opacity: nextImageOpacity }]} />
+          <Animated.Image source={slides[currentImageIndex].image } style={[{ width: width, height: height/2 - 70, position: "absolute"}, { opacity: currentImageOpacity }]} />
+          <View style={[{ width: width, height: height/2 - 70, position: "absolute", top: 0, left: 0 }, { backgroundColor: "rgba(0, 0, 0, 0.15)" }]}></View>
+          <Animated.View style={{position: "absolute", flexDirection: "row"}}>
+            <Text style={[styles.slideshowText]}>Sparking</Text>
+            <Animated.Text style={[{ transform: [{ translateX: textXTranslate }], opacity: textOpacity }, styles.slideshowText, { marginLeft: 5, color: slides[currentTextIndex].textColor }]}>{slides[currentTextIndex].text}</Animated.Text>
+
+          </Animated.View>
+          
         </View>
 
         <View style={styles.teamInfoView}>
@@ -543,7 +548,7 @@ export default function HomeScreen() {
             </Text>
             <FlatList
               data={SPONSOR_IMAGE_LIST}
-              renderItem={({item})=><Image source={{uri:item}} style={{width:125, height: 85}}/>}
+              renderItem={({item})=><Image source={item} resizeMode='contain' style={{width:125, height: 85}}/>}
               horizontal={true}
               ItemSeparatorComponent={<View style={{width: 25, height: 10}}></View>}
               contentContainerStyle={{marginTop:10, width: width-100, height: 90}}
@@ -561,7 +566,7 @@ export default function HomeScreen() {
               }
             })}}>
               <View style={styles.eventView}>
-                <Image style={styles.eventImage} source={{ uri: slides[0].image }} />
+                <Image style={styles.eventImage} source={EVENT_DATES[0].image } />
                 <View style={styles.eventTextView}>
                   <Text style={styles.eventNameHeader}>{EVENT_DATES[0].eventName}</Text>
                   <Text style={styles.eventDescription}>{EVENT_DATES[0].description}</Text>
@@ -575,7 +580,7 @@ export default function HomeScreen() {
               }
             })}}>
               <View style={styles.eventView}>
-                <Image style={styles.eventImage} source={{ uri: slides[0].image }} />
+                <Image style={styles.eventImage} source={EVENT_DATES[1].image } />
                 <View style={styles.eventTextView}>
                   <Text style={styles.eventNameHeader}>{EVENT_DATES[1].eventName}</Text>
                   <Text style={styles.eventDescription}>{EVENT_DATES[1].description}</Text>

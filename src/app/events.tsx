@@ -1,6 +1,6 @@
 import { Image } from 'expo-image';
 import { SymbolView } from 'expo-symbols';
-import { Platform, Pressable, ScrollView, StyleSheet, View, Text } from 'react-native';
+import { Platform, Pressable, ScrollView, StyleSheet, View, Text, Linking  } from 'react-native';
 import {Calendar, LocaleConfig} from 'react-native-calendars';
 import { EVENT_DATES, MARKED_DATES } from '../../config';
 import { useState, useEffect } from 'react';
@@ -92,7 +92,7 @@ export default function Events() {
               <View style={{ flexDirection: "column", width: eventDetailsWidth, height: eventDetailsHeight, justifyContent: "center" }}>
                 <View style={{ flexDirection: "column", alignItems: "center", justifyContent: "space-between", height: eventDetailsHeight-40 }}>
                   <Text style={styles.eventNameHeader}>{EVENT_DATES[urlEventIndex].eventName}</Text>
-                  <Image style={{ backgroundColor: "grey", width: 425 + 0.25 * (width-1272), height: 225 + 0.125 * (height-601) }} />
+                  <Image resizeMode='cover' style={{ backgroundColor: "grey", width: 425 + 0.25 * (width-1272), height: 225 + 0.125 * (height-601) }} source={EVENT_DATES[urlEventIndex].image} />
                   <Text style={{fontSize: eventFont, fontFamily:"Lato_400Regular", textAlign: "center"}}>{EVENT_DATES[urlEventIndex].description} ({EVENT_DATES[urlEventIndex].dateDisplay} • {EVENT_DATES[urlEventIndex].time})</Text>
                 </View>
                 {EVENT_DATES[urlEventIndex].signupNeeded ? (
@@ -105,12 +105,12 @@ export default function Events() {
                       marginVertical: 25,
                     }}
                   >
-                    <Pressable onPress={() => { }}>
+                    <Pressable onPress={() => {Linking.openURL(EVENT_DATES[urlEventIndex].signupLink)}}>
                       <View
                         style={{
                           width: 200,
                           height: 50,
-                          backgroundColor: "grey",
+                          backgroundColor: "#ffb731",
                           justifyContent: "center",
                           alignItems: "center",
                           borderRadius: 10,
@@ -247,6 +247,7 @@ function MobileEvents() {
                     width: 250,
                     height: 150,
                   }}
+                  source={EVENT_DATES[urlEventIndex].image}
                 />
 
                 <Text
@@ -271,12 +272,12 @@ function MobileEvents() {
                     marginTop: 10,
                   }}
                 >
-                  <Pressable onPress={() => {}}>
+                  <Pressable onPress={() => {Linking.openURL(EVENT_DATES[urlEventIndex].signupLink)}}>
                     <View
                       style={{
                         width: 150,
                         height: 30,
-                        backgroundColor: "grey",
+                        backgroundColor: "#ffb731",
                         justifyContent: "center",
                         alignItems: "center",
                         borderRadius: 10,

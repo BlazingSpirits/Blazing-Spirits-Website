@@ -1,7 +1,7 @@
 
 import useResponsive from '@/hooks/useResponsive';
 import { SymbolView } from 'expo-symbols';
-import { Platform, Pressable, ScrollView, StyleSheet, View, Text, Image } from 'react-native';
+import { Platform, Pressable, ScrollView, StyleSheet, View, Text, Image, Linking } from 'react-native';
 
 export default function SupportUs() {
   const {isMobile} = useResponsive();
@@ -28,34 +28,35 @@ export default function SupportUs() {
         <ScrollView contentContainerStyle={{ paddingBottom: 25 }}>
           <Text style={styles.heroText}>Support the Spirits!</Text>
 
-          <View style={styles.supportTypeView}>
+          
+
+          <View style={[styles.supportTypeView]}>
             <Text style={{ marginBottom: 10, fontSize: 25, fontFamily: 'Lato_700Bold' }}>
-              Sponorships
+              Donations
             </Text>
             <View style={{ flexDirection: "row", justifyContent: "space-between", width: 1100 }}>
-              <Image style={{ width: 325, height: 200, backgroundColor: "#c4c4c4" }} />
+              <Image style={{ width: 325, height: 200, backgroundColor: "#c4c4c4" }} source={require("website_130/assets/images/donation-example.png")}/>
               <View style={{ width: 750, justifyContent: "center" }}>
-                <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Becoming a sponsor helps not only with funding competitions. Through your support, we are also able to continue running events that support FIRST and the town of Windsor, and gain the expertise needed to become future professionals.</Text>
-                <Pressable style={{ marginTop: 5 }}>
-                  <View style={{ backgroundColor: "#c4c4c4", width: 175, justifyContent: "center", alignItems: "center", paddingVertical: 5 }}>
-                    <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Become a Sponsor!</Text>
+                <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Individual donations help to keep our team functioning. As a community team, we are able to give students from around Connecticut and New England a chance to compete with us. So any donation that you can give will be very appreciated. When using Venmo, be sure to detail that the donation is to the Blazing Spirits.</Text>
+                <Pressable style={{ marginTop: 5 }} onPress={() => {Linking.openURL("https://account.venmo.com/u/Team-Paragon")}} >
+                  <View style={{ backgroundColor: "#ffb731", width: 140, justifyContent: "center", alignItems: "center", paddingVertical: 5 }}>
+                    <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Donate Today!</Text>
                   </View>
                 </Pressable>
               </View>
             </View>
           </View>
-
           <View style={[styles.supportTypeView, { marginTop: 50 }]}>
             <Text style={{ marginBottom: 10, fontSize: 25, fontFamily: 'Lato_700Bold' }}>
-              Donations
+              Social Media
             </Text>
             <View style={{ flexDirection: "row", justifyContent: "space-between", width: 1100 }}>
-              <Image style={{ width: 325, height: 200, backgroundColor: "#c4c4c4" }} />
+              <Image style={{ width: 325, height: 200, backgroundColor: "#ffb731" }} source={require("website_130/assets/images/linktree-logo.png")}/>
               <View style={{ width: 750, justifyContent: "center" }}>
-                <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Individual donations help to keep our team functioning. As a community team, we are able to give students from around Connecticut and New England a chance to compete with us. So any donation that you can give will be very appreciated.</Text>
-                <Pressable style={{ marginTop: 5 }}>
-                  <View style={{ backgroundColor: "#c4c4c4", width: 140, justifyContent: "center", alignItems: "center", paddingVertical: 5 }}>
-                    <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Donate Today!</Text>
+                <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Following along with our social media pages allows us to spread STEM further than the borders of Connecticut. You also get to see the inner workings of our robotics team, and learn more about more topics in STEM.</Text>
+                <Pressable style={{ marginTop: 5 }} onPress={() => {Linking.openURL("https://linktr.ee/blazing_spirits")}}>
+                  <View style={{ backgroundColor: "#ffb731", width: 140, justifyContent: "center", alignItems: "center", paddingVertical: 5 }}>
+                    <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Follow Us!</Text>
                   </View>
                 </Pressable>
               </View>
@@ -91,15 +92,15 @@ export default function SupportUs() {
 
           <View style={styles.supportTypeView}>
             <Text style={{ marginBottom: 10, fontSize: 25, fontFamily: 'Lato_700Bold' }}>
-              Sponorships
+              Donations
             </Text>
             <View style={{ flexDirection: "column", justifyContent: "space-between", width: 1100, height: 425 }}>
-              <Image style={{ width: 325, height: 200, backgroundColor: "#c4c4c4" }} />
+              <Image style={{ width: 325, height: 200, backgroundColor: "#c4c4c4" }} source={require("website_130/assets/images/donation-example.png")}/>
               <View style={{ width: 325, justifyContent: "center", }}>
-                <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Becoming a sponsor helps not only with funding competitions. Through your support, we are also able to continue running events that support FIRST and the town of Windsor, and gain the expertise needed to become future professionals.</Text>
-                <Pressable style={{ marginTop: 5 }}>
-                  <View style={{ backgroundColor: "#c4c4c4", width: 175, justifyContent: "center", alignItems: "center", paddingVertical: 5 }}>
-                    <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Become a Sponsor!</Text>
+                <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Individual donations help to keep our team functioning. As a community team, we are able to give students from around Connecticut and New England a chance to compete with us. So any donation that you can give will be very appreciated. When using Venmo, be sure to detail that the donation is to the Blazing Spirits.</Text>
+                <Pressable style={{ marginTop: 5 }} onPress={() => {Linking.openURL("https://account.venmo.com/u/Team-Paragon")}}>
+                  <View style={{ backgroundColor: "#ffb731", width: 175, justifyContent: "center", alignItems: "center", paddingVertical: 5, borderRadius: 5 }}>
+                    <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Donate Today!</Text>
                   </View>
                 </Pressable>
               </View>
@@ -108,15 +109,15 @@ export default function SupportUs() {
 
           <View style={styles.supportTypeView}>
             <Text style={{ marginBottom: 10, fontSize: 25, fontFamily: 'Lato_700Bold' }}>
-              Donations
+              Social Media
             </Text>
-            <View style={{ flexDirection: "column", justifyContent: "space-between", width: 1100, height: 425 }}>
-              <Image style={{ width: 325, height: 200, backgroundColor: "#c4c4c4" }} />
+            <View style={{ flexDirection: "column", justifyContent: "space-between", width: 1100, height: 380 }}>
+              <Image style={{ width: 325, height: 200, backgroundColor: "#c4c4c4" }} source={require("website_130/assets/images/linktree-logo.png")}/>
               <View style={{ width: 325, justifyContent: "center", }}>
-                <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Individual donations help to keep our team functioning. As a community team, we are able to give students from around Connecticut and New England a chance to compete with us. So any donation that you can give will be very appreciated.</Text>
-                <Pressable style={{ marginTop: 5 }}>
-                  <View style={{ backgroundColor: "#c4c4c4", width: 140, justifyContent: "center", alignItems: "center", paddingVertical: 5 }}>
-                    <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Donate Today!</Text>
+                <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Following along with our social media pages allows us to spread STEM further than the borders of Connecticut. You also get to see the inner workings of our robotics team, and learn more about more topics in STEM.</Text>
+                <Pressable style={{ marginTop: 5 }} onPress={() => {Linking.openURL("https://linktr.ee/blazing_spirits")}}>
+                  <View style={{ backgroundColor: "#ffb731", width: 140, justifyContent: "center", alignItems: "center", paddingVertical: 5, borderRadius: 5 }}>
+                    <Text style={{ fontSize: 18, fontFamily: 'Lato_400Regular' }}>Follow Us!</Text>
                   </View>
                 </Pressable>
               </View>

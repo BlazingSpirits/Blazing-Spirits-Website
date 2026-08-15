@@ -1,6 +1,7 @@
-import { View, Text, Image} from "react-native";
-import { StyleSheet, Animated, Pressable} from "react-native";
+import { View, Text, Image } from "react-native";
+import { StyleSheet, Animated, Pressable } from "react-native";
 import { useRef } from "react";
+import useResponsive from "@/hooks/useResponsive";
 
 export interface ProfileIconProps {
     id: number;
@@ -17,38 +18,19 @@ const iconMargins = [
 ]
 
 export const ProfileIcon: React.FC<ProfileIconProps> = ({
-  id,
-  name,
-  isMentor,
-  duration,
-  role,
-  note,
-  source,
+    id,
+    name,
+    isMentor,
+    duration,
+    role,
+    note,
+    source,
 }) => {
     const AnimatedPressable =
         Animated.createAnimatedComponent(Pressable);
 
+    const { isMobile } = useResponsive();
     
-    const styles = StyleSheet.create({
-        cardView:{
-            backgroundColor: "#c4c4c4",
-            width:200,
-            height:300,
-            justifyContent: "space-between",
-            alignItems: "center",
-        },
-        photoView:{
-            width: 200,
-            height: 250,
-            justifyContent: "center",
-            alignItems: "center",
-        },
-        descriptionView:{
-            width: 200,
-            height:40,
-            alignItems: "center"
-        },
-    })
 
     const opacity = useRef(new Animated.Value(0)).current;
 
@@ -69,47 +51,112 @@ export const ProfileIcon: React.FC<ProfileIconProps> = ({
     }
 
     const fadeIn = () => {
-        if(note){
+        if (note) {
             fadeInAnimation();
         }
     }
 
     const fadeOut = () => {
-        if(note){
+        if (note) {
             fadeOutAnimation();
         }
     }
 
     const durationPhrase = () => {
-        if(isMentor){
+        if (isMentor) {
             return duration !== 1 ? duration + " years" : duration + "year"
-        }else{
-            if(duration % 10 === 1){
-                return duration+"st year"
-            }else if(duration % 10 === 2){
-                return duration+"nd year"
-            }else if(duration % 10 === 3){
-                return duration+"rd year"
-            }else{
-                return duration+"th year"
+        } else {
+            if (duration % 10 === 1) {
+                return duration + "st year"
+            } else if (duration % 10 === 2) {
+                return duration + "nd year"
+            } else if (duration % 10 === 3) {
+                return duration + "rd year"
+            } else {
+                return duration + "th year"
             }
         }
     }
 
-    return(
+    function DesktopProfileIcon(){
+        const styles = StyleSheet.create({
+            cardView: {
+                backgroundColor: "#c4c4c4",
+                width: 200,
+                height: 300,
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginRight: 100
+            },
+            photoView: {
+                width: 200,
+                height: 250,
+                justifyContent: "center",
+                alignItems: "center",
+            },
+            descriptionView: {
+                width: 200,
+                height: 40,
+                alignItems: "center"
+            },
+        });
+        return(
+            <View style={[styles.cardView]}>
+                <View style={styles.photoView}>
+                    <Image style={{width: 200, height: 250,}} source={require("website_130/assets/images/default-profile-picture.png")}  />
+                    <AnimatedPressable style={[StyleSheet.absoluteFill, { backgroundColor: "#3d3d3de7", opacity: opacity, justifyContent: "center", alignItems: "center", }]} onHoverIn={() => fadeIn()} onHoverOut={() => fadeOut()}>
+                        <Animated.Text style={{ fontSize: 15, color: "white", opacity: opacity }}>{note}</Animated.Text>
+                    </AnimatedPressable>
+
+                </View>
+                <View style={styles.descriptionView}>
+                    <Text style={{ fontSize: 15, fontFamily: "Lato_400Regular" }}>{name}</Text>
+                    <Text style={{ fontSize: 12, fontFamily: "Lato_300Light" }}>{role} • {durationPhrase()}</Text>
+                </View>
+            </View>
+        )
         
-        <View style={[styles.cardView]}>
-            <View style={styles.photoView}>
-                <Image source={{uri: source !== null ? source : source}} />
-                <AnimatedPressable style={[StyleSheet.absoluteFill, {backgroundColor: "#3d3d3de7", opacity: opacity, justifyContent: "center", alignItems: "center",}]} onHoverIn={() =>fadeIn()} onHoverOut={()=>fadeOut()}>
-                    <Animated.Text style={{fontSize: 15, color: "white", opacity: opacity}}>{note}</Animated.Text>
-                </AnimatedPressable>
-                
+    }
+
+    function MobileProfileIcon(){
+        const styles = StyleSheet.create({
+            cardView: {
+                backgroundColor: "#c4c4c4",
+                width: 200,
+                height: 300,
+                justifyContent: "space-between",
+                alignItems: "center",
+            },
+            photoView: {
+                width: 200,
+                height: 250,
+                justifyContent: "center",
+                alignItems: "center",
+            },
+            descriptionView: {
+                width: 200,
+                height: 40,
+                alignItems: "center"
+            },
+        });
+
+
+        return(
+            <View style={[styles.cardView]}>
+                <View style={styles.photoView}>
+                    <Image style={{width: 200, height: 250,}} source={require("website_130/assets/images/default-profile-picture.png")} />
+                    <AnimatedPressable style={[StyleSheet.absoluteFill, { backgroundColor: "#3d3d3de7", opacity: opacity, justifyContent: "center", alignItems: "center", }]} onHoverIn={() => fadeIn()} onHoverOut={() => fadeOut()}>
+                        <Animated.Text style={{ fontSize: 15, color: "white", opacity: opacity }}>{note}</Animated.Text>
+                    </AnimatedPressable>
+
+                </View>
+                <View style={styles.descriptionView}>
+                    <Text style={{ fontSize: 15, fontFamily: "Lato_400Regular" }}>{name}</Text>
+                    <Text style={{ fontSize: 12, fontFamily: "Lato_300Light" }}>{role} • {durationPhrase()}</Text>
+                </View>
             </View>
-            <View style={styles.descriptionView}>
-                <Text style={{fontSize: 15 , fontFamily: "Lato_400Regular"}}>{name}</Text>
-                <Text style={{fontSize: 12, fontFamily: "Lato_300Light"}}>{role} • {durationPhrase()}</Text>
-            </View>
-        </View>
-    );
+        )
+    }
+
+    return isMobile ? <MobileProfileIcon /> : <DesktopProfileIcon />;
 }
