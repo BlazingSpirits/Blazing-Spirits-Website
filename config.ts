@@ -95,6 +95,15 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
         [
             {
                 id: 0,
+                name: "Trey",
+                isMentor: false,
+                duration: 1,
+                role: "Programming",
+                note: "",
+                source: require("website_130/assets/images/Team Photo Trey.jpg"),
+            },
+            {
+                id: 1,
                 name: "Dayne",
                 isMentor: false,
                 duration: 1,
@@ -103,7 +112,7 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
                 source: require("website_130/assets/images/Team Photo Dayne.jpg"),
             },
             {
-                id: 1,
+                id: 2,
                 name: "Gabe",
                 isMentor: false,
                 duration: 1,
