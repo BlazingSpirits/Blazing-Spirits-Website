@@ -10,7 +10,7 @@ export interface ProfileIconProps {
     duration: number;
     role: string;
     note?: string;
-    source?: string;
+    source: string;
 }
 
 const iconMargins = [
@@ -78,10 +78,28 @@ export const ProfileIcon: React.FC<ProfileIconProps> = ({
         }
     }
 
+    const RoleString = (role: string, duration: number) => {
+        if(role === ""){
+            return durationPhrase()
+        } 
+        else{
+            return role + " • " + durationPhrase()
+        }
+    }
+
+    const cardBackgroundColorSetter = (isMentor: boolean) => {
+        if(isMentor){
+            return "#717fff"
+        }else{
+            return "#fcd2ab"
+        }
+        
+    }
+
     function DesktopProfileIcon(){
         const styles = StyleSheet.create({
             cardView: {
-                backgroundColor: "#c4c4c4",
+                backgroundColor: cardBackgroundColorSetter(isMentor),
                 width: 200,
                 height: 300,
                 justifyContent: "space-between",
@@ -103,7 +121,7 @@ export const ProfileIcon: React.FC<ProfileIconProps> = ({
         return(
             <View style={[styles.cardView]}>
                 <View style={styles.photoView}>
-                    <Image style={{width: 200, height: 250,}} source={require("website_130/assets/images/default-profile-picture.png")}  />
+                    <Image style={{width: 200, height: 250,}} source={source}  />
                     <AnimatedPressable style={[StyleSheet.absoluteFill, { backgroundColor: "#3d3d3de7", opacity: opacity, justifyContent: "center", alignItems: "center", }]} onHoverIn={() => fadeIn()} onHoverOut={() => fadeOut()}>
                         <Animated.Text style={{ fontSize: 15, color: "white", opacity: opacity }}>{note}</Animated.Text>
                     </AnimatedPressable>
@@ -111,7 +129,7 @@ export const ProfileIcon: React.FC<ProfileIconProps> = ({
                 </View>
                 <View style={styles.descriptionView}>
                     <Text style={{ fontSize: 15, fontFamily: "Lato_400Regular" }}>{name}</Text>
-                    <Text style={{ fontSize: 12, fontFamily: "Lato_300Light" }}>{role} • {durationPhrase()}</Text>
+                    <Text style={{ fontSize: 12, fontFamily: "Lato_300Light" }}>{RoleString(role, duration)}</Text>
                 </View>
             </View>
         )
@@ -121,7 +139,7 @@ export const ProfileIcon: React.FC<ProfileIconProps> = ({
     function MobileProfileIcon(){
         const styles = StyleSheet.create({
             cardView: {
-                backgroundColor: "#c4c4c4",
+                backgroundColor: cardBackgroundColorSetter(isMentor),
                 width: 200,
                 height: 300,
                 justifyContent: "space-between",
@@ -144,7 +162,7 @@ export const ProfileIcon: React.FC<ProfileIconProps> = ({
         return(
             <View style={[styles.cardView]}>
                 <View style={styles.photoView}>
-                    <Image style={{width: 200, height: 250,}} source={require("website_130/assets/images/default-profile-picture.png")} />
+                    <Image style={{width: 200, height: 250,}} source={source} />
                     <AnimatedPressable style={[StyleSheet.absoluteFill, { backgroundColor: "#3d3d3de7", opacity: opacity, justifyContent: "center", alignItems: "center", }]} onHoverIn={() => fadeIn()} onHoverOut={() => fadeOut()}>
                         <Animated.Text style={{ fontSize: 15, color: "white", opacity: opacity }}>{note}</Animated.Text>
                     </AnimatedPressable>
@@ -152,7 +170,7 @@ export const ProfileIcon: React.FC<ProfileIconProps> = ({
                 </View>
                 <View style={styles.descriptionView}>
                     <Text style={{ fontSize: 15, fontFamily: "Lato_400Regular" }}>{name}</Text>
-                    <Text style={{ fontSize: 12, fontFamily: "Lato_300Light" }}>{role} • {durationPhrase()}</Text>
+                    <Text style={{ fontSize: 12, fontFamily: "Lato_300Light" }}>{RoleString(role, duration)}</Text>
                 </View>
             </View>
         )
