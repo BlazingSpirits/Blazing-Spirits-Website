@@ -270,7 +270,7 @@ export default function HomeScreen() {
           <Pressable onPress={()=>{router.push({
               pathname: "/events",
               params: {
-                event_index: 0
+                event_index: 1
               }
             })}}>
             <View style={styles.eventView}>
@@ -284,7 +284,7 @@ export default function HomeScreen() {
           <Pressable onPress={()=>{router.push({
               pathname: "/events",
               params: {
-                event_index: 1
+                event_index: 2
               }
             })}}>
           <View style={styles.eventView}>
