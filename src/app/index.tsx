@@ -274,10 +274,10 @@ export default function HomeScreen() {
               }
             })}}>
             <View style={styles.eventView}>
-                <Image style={styles.eventImage} source={EVENT_DATES[0].image} />
+                <Image style={styles.eventImage} source={EVENT_DATES[1].image} />
                 <View style={styles.eventTextView}>
-                  <Text style={styles.eventNameHeader}>{EVENT_DATES[0].eventName}</Text>
-                  <Text style={styles.eventDescription}>{EVENT_DATES[0].description}</Text>
+                  <Text style={styles.eventNameHeader}>{EVENT_DATES[1].eventName}</Text>
+                  <Text style={styles.eventDescription}>{EVENT_DATES[1].description}</Text>
                 </View>
             </View>
           </Pressable>
@@ -288,10 +288,10 @@ export default function HomeScreen() {
               }
             })}}>
           <View style={styles.eventView}>
-            <Image style={styles.eventImage} source={EVENT_DATES[1].image}/>
+            <Image style={styles.eventImage} source={EVENT_DATES[2].image}/>
             <View style={styles.eventTextView}>
-              <Text style={styles.eventNameHeader}>{EVENT_DATES[1].eventName}</Text>
-              <Text style={styles.eventDescription}>{EVENT_DATES[1].description}</Text>
+              <Text style={styles.eventNameHeader}>{EVENT_DATES[2].eventName}</Text>
+              <Text style={styles.eventDescription}>{EVENT_DATES[2].description}</Text>
             </View>
           </View>
           </Pressable>

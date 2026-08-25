@@ -200,16 +200,6 @@ export const EVENT_DATES = [
         signupLink: ""
     },
     {
-        dateString: "2026-08-28",
-        eventName: "CAD BLITZ",
-        image: require("website_130/assets/images/CAD-BLITZ-photo.png"),
-        dateDisplay: "8/28/26",
-        description: "Quick weekday events meant to give kids easy access to CAD software (Onshape) through interactive activities. Students will leave with a better understanding of CAD design, having created a 3D printed part.",
-        time: "6PM - 7:30PM",
-        signupNeeded: true,
-        signupLink: "https://forms.gle/uDazfkkvHDSjc9kG8"
-    },
-    {
         dateString: "2026-08-29",
         eventName: "Tabling at The Bean @ 226",
         image: require("website_130/assets/images/bean226-logo.png"),
@@ -218,6 +208,16 @@ export const EVENT_DATES = [
         description: "Meet with the Blazing Spirits at the Bean to discuss robotics, our outreach, and anything relating to STEM.",
         signupNeeded: false,
         signupLink: ""
+    },
+    {
+        dateString: "2026-09-04",
+        eventName: "CAD BLITZ",
+        image: require("website_130/assets/images/CAD-BLITZ-photo.png"),
+        dateDisplay: "9/4/26",
+        description: "Quick weekday events meant to give kids easy access to CAD software (Onshape) through interactive activities. Students will leave with a better understanding of CAD design, having created a 3D printed part.",
+        time: "6PM - 7:30PM",
+        signupNeeded: true,
+        signupLink: "https://forms.gle/uDazfkkvHDSjc9kG8"
     },
     {
         dateString: "2026-09-12",
@@ -233,8 +233,8 @@ export const EVENT_DATES = [
 ]
 export const MARKED_DATES = {
             "2026-08-15": { selectedColor: 'blue', selected: true },
-            "2026-08-28": { selectedColor: 'orange', selected: true  },
             "2026-08-29": { selectedColor: 'blue', selected: true  },
+            "2026-09-04": { selectedColor: 'orange', selected: true  },
             "2026-09-12": { selectedColor: 'orange', selected: true },
           }
 
