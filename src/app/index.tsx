@@ -148,7 +148,7 @@ export default function HomeScreen() {
       teamInfoView: {
         width: width,
         height: 320,
-        marginTop: 25,
+        marginTop: 50,
         justifyContent: "space-between",
         alignItems: "center",
       },
@@ -252,18 +252,6 @@ export default function HomeScreen() {
           </Animated.View>
       </View>
 
-      <View style={styles.teamInfoView}>
-        <Text style={styles.teamTextIntro}>
-          We are a <Link href="https://www.firstinspires.org/programs/ftc/" style={{color: "orange"}}>FIRST Tech Challenge</Link> Team based in <Link href="https://maps.app.goo.gl/xj5RwziAvQtdPPwz5" style={{color: "orange"}}>Windsor</Link>, Connecticut
-        </Text>
-        <View style={styles.teamSponsorView}>
-          <Text style={styles.sponsorHeaderText}>
-            Sponsored By te
-          </Text>
-          <Image source={require("website_130/assets/images/logo-collage.png")} resizeMode='contain' style={styles.sponsorImage}/>
-        </View>
-      </View>
-
       <View style={styles.upcomingEventsView}>
         <Text style={styles.upcomingEventsHeader}> Upcoming Events</Text>
         <View style={styles.eventsHolderView}>
@@ -297,6 +285,20 @@ export default function HomeScreen() {
           </Pressable>
         </View>
       </View>
+
+      <View style={styles.teamInfoView}>
+        <Text style={styles.teamTextIntro}>
+          We are a <Link href="https://www.firstinspires.org/programs/ftc/" style={{color: "orange"}}>FIRST Tech Challenge</Link> Team based in <Link href="https://maps.app.goo.gl/xj5RwziAvQtdPPwz5" style={{color: "orange"}}>Windsor</Link>, Connecticut
+        </Text>
+        <View style={styles.teamSponsorView}>
+          <Text style={styles.sponsorHeaderText}>
+            Sponsored By 
+          </Text>
+          <Image source={require("website_130/assets/images/logo-collage.png")} resizeMode='contain' style={styles.sponsorImage}/>
+        </View>
+      </View>
+
+      
 
     </ScrollView>
 
@@ -538,6 +540,40 @@ export default function HomeScreen() {
           
         </View>
 
+        <View style={styles.upcomingEventsView}>
+          <Text style={styles.upcomingEventsHeader}> Upcoming Events</Text>
+          <View style={styles.eventsHolderView}>
+            <Pressable onPress={()=>{router.push({
+              pathname: "/events",
+              params: {
+                event_index: 1
+              }
+            })}}>
+              <View style={styles.eventView}>
+                <Image style={styles.eventImage} source={EVENT_DATES[1].image } />
+                <View style={styles.eventTextView}>
+                  <Text style={styles.eventNameHeader}>{EVENT_DATES[1].eventName}</Text>
+                  <Text style={styles.eventDescription}>{EVENT_DATES[1].description}</Text>
+                </View>
+              </View>
+            </Pressable>
+            <Pressable onPress={()=>{router.push({
+              pathname: "/events",
+              params: {
+                event_index: 2
+              }
+            })}}>
+              <View style={styles.eventView}>
+                <Image style={styles.eventImage} source={EVENT_DATES[2].image } />
+                <View style={styles.eventTextView}>
+                  <Text style={styles.eventNameHeader}>{EVENT_DATES[2].eventName}</Text>
+                  <Text style={styles.eventDescription}>{EVENT_DATES[2].description}</Text>
+                </View>
+              </View>
+            </Pressable>
+          </View>
+        </View>
+
         <View style={styles.teamInfoView}>
           <Text style={styles.teamTextIntro}>
             We are a <Link href="https://www.firstinspires.org/programs/ftc/" style={{ color: "orange" }}>FIRST Tech Challenge</Link> Team based in <Link href="https://maps.app.goo.gl/xj5RwziAvQtdPPwz5" style={{ color: "orange" }}>Windsor</Link>, Connecticut
@@ -556,39 +592,7 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        <View style={styles.upcomingEventsView}>
-          <Text style={styles.upcomingEventsHeader}> Upcoming Events</Text>
-          <View style={styles.eventsHolderView}>
-            <Pressable onPress={()=>{router.push({
-              pathname: "/events",
-              params: {
-                event_index: 0
-              }
-            })}}>
-              <View style={styles.eventView}>
-                <Image style={styles.eventImage} source={EVENT_DATES[0].image } />
-                <View style={styles.eventTextView}>
-                  <Text style={styles.eventNameHeader}>{EVENT_DATES[0].eventName}</Text>
-                  <Text style={styles.eventDescription}>{EVENT_DATES[0].description}</Text>
-                </View>
-              </View>
-            </Pressable>
-            <Pressable onPress={()=>{router.push({
-              pathname: "/events",
-              params: {
-                event_index: 1
-              }
-            })}}>
-              <View style={styles.eventView}>
-                <Image style={styles.eventImage} source={EVENT_DATES[1].image } />
-                <View style={styles.eventTextView}>
-                  <Text style={styles.eventNameHeader}>{EVENT_DATES[1].eventName}</Text>
-                  <Text style={styles.eventDescription}>{EVENT_DATES[1].description}</Text>
-                </View>
-              </View>
-            </Pressable>
-          </View>
-        </View>
+        
 
       </ScrollView>
     );

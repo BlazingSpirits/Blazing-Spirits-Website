@@ -214,7 +214,7 @@ export const EVENT_DATES = [
         eventName: "CAD BLITZ",
         image: require("website_130/assets/images/CAD-BLITZ-photo.png"),
         dateDisplay: "9/4/26",
-        description: "Quick weekday events meant to give kids easy access to CAD software (Onshape) through interactive activities. Students will leave with a better understanding of CAD design, having created a 3D printed part.",
+        description: "Quick weekday event meant to give kids easy access to CAD software (Onshape) through interactive activities. Students will leave with a better understanding of CAD.",
         time: "6PM - 7:30PM",
         signupNeeded: true,
         signupLink: "https://forms.gle/uDazfkkvHDSjc9kG8"
