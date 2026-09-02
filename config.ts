@@ -139,7 +139,7 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
                 duration: 1,
                 role: "Programming",
                 note: "",
-                source: require("website_130/assets/images/Team Photo Dayne.jpg"),
+                source: require("website_130/assets/images/default-profile-picture.png"),
             },
         ]
     ],
