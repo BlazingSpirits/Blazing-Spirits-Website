@@ -210,10 +210,10 @@ export const EVENT_DATES = [
         signupLink: ""
     },
     {
-        dateString: "2026-09-04",
+        dateString: "2026-09-11",
         eventName: "CAD BLITZ",
         image: require("website_130/assets/images/CAD-BLITZ-photo.png"),
-        dateDisplay: "9/4/26",
+        dateDisplay: "9/11/26",
         description: "Quick weekday event meant to give kids easy access to CAD software (Onshape) through interactive activities. Students will leave with a better understanding of CAD.",
         time: "6PM - 7:30PM",
         signupNeeded: true,
@@ -234,7 +234,7 @@ export const EVENT_DATES = [
 export const MARKED_DATES = {
             "2026-08-15": { selectedColor: 'blue', selected: true },
             "2026-08-29": { selectedColor: 'blue', selected: true  },
-            "2026-09-04": { selectedColor: 'orange', selected: true  },
+            "2026-09-11": { selectedColor: 'orange', selected: true  },
             "2026-09-12": { selectedColor: 'orange', selected: true },
           }
 
