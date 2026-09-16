@@ -262,8 +262,8 @@ export const EVENT_DATES = [
     },
     {
         dateString: "2026-11-15",
-        eventName: "CAD BLITZ",
-        image: require("website_130/assets/images/CAD-BLITZ-photo.png"),
+        eventName: "Husky Scrimmage",
+        image: require("website_130/assets/images/competition-picture.jpg"),
         dateDisplay: "11/15/26",
         description: "Our first competition for the season that will be held at Uconn. Come out and support us this weekend!",
         time: "6PM - 7:30PM",
