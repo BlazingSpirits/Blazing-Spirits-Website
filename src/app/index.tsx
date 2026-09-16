@@ -258,28 +258,28 @@ export default function HomeScreen() {
           <Pressable onPress={()=>{router.push({
               pathname: "/events",
               params: {
-                event_index: 2
+                event_index: 4
               }
             })}}>
             <View style={styles.eventView}>
-                <Image style={styles.eventImage} source={EVENT_DATES[2].image} />
+                <Image style={styles.eventImage} source={EVENT_DATES[4].image} />
                 <View style={styles.eventTextView}>
-                  <Text style={styles.eventNameHeader}>{EVENT_DATES[2].eventName}</Text>
-                  <Text style={styles.eventDescription}>{EVENT_DATES[2].description}</Text>
+                  <Text style={styles.eventNameHeader}>{EVENT_DATES[4].eventName}</Text>
+                  <Text style={styles.eventDescription}>{EVENT_DATES[4].description}</Text>
                 </View>
             </View>
           </Pressable>
           <Pressable onPress={()=>{router.push({
               pathname: "/events",
               params: {
-                event_index: 3
+                event_index: 5
               }
             })}}>
           <View style={styles.eventView}>
-            <Image style={styles.eventImage} source={EVENT_DATES[3].image}/>
+            <Image style={styles.eventImage} source={EVENT_DATES[5].image}/>
             <View style={styles.eventTextView}>
-              <Text style={styles.eventNameHeader}>{EVENT_DATES[3].eventName}</Text>
-              <Text style={styles.eventDescription}>{EVENT_DATES[3].description}</Text>
+              <Text style={styles.eventNameHeader}>{EVENT_DATES[5].eventName}</Text>
+              <Text style={styles.eventDescription}>{EVENT_DATES[5].description}</Text>
             </View>
           </View>
           </Pressable>
@@ -546,28 +546,28 @@ export default function HomeScreen() {
             <Pressable onPress={()=>{router.push({
               pathname: "/events",
               params: {
-                event_index: 2
+                event_index: 4
               }
             })}}>
               <View style={styles.eventView}>
-                <Image style={styles.eventImage} source={EVENT_DATES[2].image } />
+                <Image style={styles.eventImage} source={EVENT_DATES[4].image } />
                 <View style={styles.eventTextView}>
-                  <Text style={styles.eventNameHeader}>{EVENT_DATES[2].eventName}</Text>
-                  <Text style={styles.eventDescription}>{EVENT_DATES[2].description}</Text>
+                  <Text style={styles.eventNameHeader}>{EVENT_DATES[4].eventName}</Text>
+                  <Text style={styles.eventDescription}>{EVENT_DATES[4].description}</Text>
                 </View>
               </View>
             </Pressable>
             <Pressable onPress={()=>{router.push({
               pathname: "/events",
               params: {
-                event_index: 3
+                event_index: 5
               }
             })}}>
               <View style={styles.eventView}>
-                <Image style={styles.eventImage} source={EVENT_DATES[3].image } />
+                <Image style={styles.eventImage} source={EVENT_DATES[5].image } />
                 <View style={styles.eventTextView}>
-                  <Text style={styles.eventNameHeader}>{EVENT_DATES[3].eventName}</Text>
-                  <Text style={styles.eventDescription}>{EVENT_DATES[3].description}</Text>
+                  <Text style={styles.eventNameHeader}>{EVENT_DATES[5].eventName}</Text>
+                  <Text style={styles.eventDescription}>{EVENT_DATES[5].description}</Text>
                 </View>
               </View>
             </Pressable>

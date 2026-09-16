@@ -99,7 +99,7 @@ export const TEAM_LIST: ProfileIconProps[][][] = [
                 isMentor: false,
                 duration: 2,
                 role: "Photography",
-                note: "",
+                note: "The Office, season 7, episode 19, minute 14:45",
                 source: require("website_130/assets/images/Team Photo Trey.jpg"),
             },
             
@@ -249,15 +249,37 @@ export const EVENT_DATES = [
         description: "Bring bottles and cans to the build site to help us fundraise for the FTC Season. This date also marks the first day of the FTC season!",
         signupNeeded: false,
         signupLink: ""
-    }
+    },
+    {
+        dateString: "2026-09-25",
+        eventName: "CAD BLITZ",
+        image: require("website_130/assets/images/CAD-BLITZ-photo.png"),
+        dateDisplay: "9/25/26",
+        description: "Quick weekday event meant to give kids easy access to CAD software (Onshape) through interactive activities. Students will create their own 3D print.",
+        time: "6PM - 7:30PM",
+        signupNeeded: true,
+        signupLink: "https://forms.gle/S51uo6xCQkvNfYTWA"
+    },
+    {
+        dateString: "2026-11-15",
+        eventName: "CAD BLITZ",
+        image: require("website_130/assets/images/CAD-BLITZ-photo.png"),
+        dateDisplay: "11/15/26",
+        description: "Our first competition for the season that will be held at Uconn. Come out and support us this weekend!",
+        time: "6PM - 7:30PM",
+        signupNeeded: true,
+        signupLink: ""
+    },
     
 ]
 export const MARKED_DATES = {
-            "2026-08-15": { selectedColor: 'blue', selected: true },
-            "2026-08-29": { selectedColor: 'blue', selected: true  },
-            "2026-09-11": { selectedColor: 'orange', selected: true  },
-            "2026-09-12": { selectedColor: 'orange', selected: true },
-          }
+    "2026-08-15": { selectedColor: 'blue', selected: true },
+    "2026-08-29": { selectedColor: 'blue', selected: true  },
+    "2026-09-11": { selectedColor: 'orange', selected: true  },
+    "2026-09-12": { selectedColor: 'orange', selected: true },
+    "2026-09-25": { selectedColor: 'orange', selected: true },
+    "2026-11-15": { selectedColor: 'blue', selected: true  },
+}
 
 export const SPONSOR_IMAGE_LIST = [
     require("website_130/assets/images/ace-logo.png"),
